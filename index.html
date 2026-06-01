@@ -7027,7 +7027,7 @@
         style: PLOT_STYLE,
         width: 540, height: 320,
         marginLeft: 95, marginRight: 20,
-        x: { label: "Винрейт", percent: true, grid: true, tickFormat: d => (d*100).toFixed(0) + "%" },
+        x: { label: "Винрейт", percent: true, grid: true },
         y: { label: null },
         marks: [
           Plot.barX(rows, { x: "win_rate", y: "player", sort: { y: "x", reverse: true }, fill: "#f1c232", stroke: "#b89224", strokeWidth: 0.3 }),
@@ -7041,7 +7041,7 @@
         style: PLOT_STYLE,
         width: 540, height: 320,
         marginLeft: 95, marginRight: 20,
-        x: { label: "Очковый Ɣ", percent: true, grid: true, tickFormat: d => (d*100).toFixed(0) + "%" },
+        x: { label: "Очковый Ɣ", percent: true, grid: true },
         y: { label: null },
         marks: [
           Plot.barX(rows, { x: "avg_gamma", y: "player", sort: { y: "x", reverse: true }, fill: "#f59f3a", stroke: "#b86d1c", strokeWidth: 0.3 }),
@@ -7081,7 +7081,7 @@
           style: PLOT_STYLE,
           width: 1100, height: 360,
           marginLeft: 180, marginRight: 30,
-          x: { label: "Винрейт", percent: true, grid: true, tickFormat: d => (d*100).toFixed(0) + "%" },
+          x: { label: "Винрейт", percent: true, grid: true },
           y: { label: null },
           marks: [
             Plot.barX(top10, {
