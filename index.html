@@ -10,20 +10,50 @@
   <style>
     :root {
       color-scheme: dark;
-      --bg-deep:   #07091a;
-      --bg-mid:    #0d1228;
-      --bg-panel:  rgba(18, 23, 45, 0.85);
-      --bg-zebra:  rgba(30, 38, 65, 0.55);
-      --bg-hover:  rgba(50, 60, 95, 0.75);
-      --gold:      #f1c232;
-      --gold-dim:  #b89224;
-      --gold-bright: #ffd54a;
-      --orange:    #f59f3a;
-      --cyan:      #5fd0d8;
-      --text:      #e8dcb6;
-      --text-dim:  #a89c80;
-      --border:    rgba(241, 194, 50, 0.35);
-      --border-strong: rgba(241, 194, 50, 0.65);
+      --bg-deep:   #1a1f2e;
+      --bg-mid:    #232a3c;
+      --bg-panel:  rgba(48, 56, 78, 0.7);
+      --bg-zebra:  rgba(62, 72, 96, 0.4);
+      --bg-hover:  rgba(80, 92, 120, 0.55);
+      --gold:      #c4a55a;
+      --gold-dim:  #9a8245;
+      --gold-bright: #d4b870;
+      --orange:    #d8945a;
+      --orange-dim: #a87042;
+      --cyan:      #7eb8bf;
+      --text:      #d4cba5;
+      --text-dim:  #978d70;
+      --border:    rgba(196, 165, 90, 0.25);
+      --border-strong: rgba(196, 165, 90, 0.45);
+      --h2-text:   #1a1f2e;
+      --star-opacity: 0.20;
+      --nebula-1: rgba(70, 55, 105, 0.25);
+      --nebula-2: rgba(45, 70, 100, 0.22);
+      --nebula-3: rgba(85, 60, 70, 0.18);
+      --heat-scheme: "ylorbr";
+    }
+    body.light {
+      color-scheme: light;
+      --bg-deep:   #f4ecd5;
+      --bg-mid:    #ebe3c5;
+      --bg-panel:  rgba(252, 246, 226, 0.92);
+      --bg-zebra:  rgba(232, 222, 192, 0.55);
+      --bg-hover:  rgba(212, 200, 165, 0.5);
+      --gold:      #8a6e2f;
+      --gold-dim:  #6d5523;
+      --gold-bright: #a98a3e;
+      --orange:    #a85f2a;
+      --orange-dim: #7a4218;
+      --cyan:      #2c6d76;
+      --text:      #2a2418;
+      --text-dim:  #6b5e44;
+      --border:    rgba(138, 110, 47, 0.32);
+      --border-strong: rgba(138, 110, 47, 0.55);
+      --h2-text:   #f4ecd5;
+      --star-opacity: 0;
+      --nebula-1: rgba(240, 230, 195, 0.5);
+      --nebula-2: rgba(232, 220, 188, 0.5);
+      --nebula-3: rgba(248, 238, 210, 0.5);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -36,15 +66,15 @@
       font-family: 'Roboto Condensed', system-ui, -apple-system, sans-serif;
       background-color: var(--bg-deep);
       background-image:
-        radial-gradient(ellipse at 20% 15%, rgba(50, 30, 90, 0.55), transparent 55%),
-        radial-gradient(ellipse at 85% 60%, rgba(20, 50, 90, 0.45), transparent 55%),
-        radial-gradient(circle at 60% 80%, rgba(70, 30, 30, 0.35), transparent 50%),
-        radial-gradient(1px 1px at 12% 22%, rgba(255,255,255,0.5), transparent 60%),
-        radial-gradient(1px 1px at 78% 12%, rgba(255,255,255,0.4), transparent 60%),
-        radial-gradient(1px 1px at 35% 65%, rgba(255,255,255,0.5), transparent 60%),
-        radial-gradient(1px 1px at 91% 88%, rgba(255,255,255,0.4), transparent 60%),
-        radial-gradient(1px 1px at 8% 80%, rgba(255,255,255,0.3), transparent 60%),
-        radial-gradient(1px 1px at 50% 40%, rgba(255,255,255,0.4), transparent 60%);
+        radial-gradient(ellipse at 20% 15%, var(--nebula-1), transparent 55%),
+        radial-gradient(ellipse at 85% 60%, var(--nebula-2), transparent 55%),
+        radial-gradient(circle at 60% 80%, var(--nebula-3), transparent 50%),
+        radial-gradient(1px 1px at 12% 22%, rgba(255,255,255,var(--star-opacity)), transparent 60%),
+        radial-gradient(1px 1px at 78% 12%, rgba(255,255,255,var(--star-opacity)), transparent 60%),
+        radial-gradient(1px 1px at 35% 65%, rgba(255,255,255,var(--star-opacity)), transparent 60%),
+        radial-gradient(1px 1px at 91% 88%, rgba(255,255,255,var(--star-opacity)), transparent 60%),
+        radial-gradient(1px 1px at 8% 80%, rgba(255,255,255,var(--star-opacity)), transparent 60%),
+        radial-gradient(1px 1px at 50% 40%, rgba(255,255,255,var(--star-opacity)), transparent 60%);
       background-attachment: fixed;
       min-height: 100vh;
     }
@@ -56,44 +86,20 @@
       color: var(--gold);
       margin: 0;
     }
-
-    h1 {
-      font-size: 2rem;
-      color: var(--gold-bright);
-      text-shadow: 0 0 14px rgba(241, 194, 50, 0.45), 0 0 28px rgba(241, 194, 50, 0.15);
-      margin: 0.4rem 0 0.2rem;
-    }
-
+    h1 { font-size: 2rem; color: var(--gold-bright); margin: 0.4rem 0 0.2rem; }
     h2 {
       font-size: 1.2rem;
       margin: 2.5rem 0 0.9rem;
       padding: 0.45rem 1rem 0.4rem;
-      color: var(--bg-deep);
-      background: linear-gradient(90deg, var(--gold) 0%, var(--gold-dim) 55%, rgba(184,146,36,0.0) 100%);
-      border-left: 4px solid var(--gold-bright);
+      color: var(--h2-text);
+      background: linear-gradient(90deg, var(--gold) 0%, var(--gold-dim) 55%, transparent 100%);
+      border-left: 4px solid var(--gold);
       letter-spacing: 0.1em;
     }
+    h3 { font-size: 0.95rem; color: var(--gold-bright); letter-spacing: 0.08em; margin: 0.9rem 0 0.4rem; }
+    h4 { font-size: 0.85rem; color: var(--orange); letter-spacing: 0.06em; margin: 0.7rem 0 0.3rem; }
 
-    h3 {
-      font-size: 0.95rem;
-      color: var(--gold-bright);
-      letter-spacing: 0.08em;
-      margin: 0.9rem 0 0.4rem;
-    }
-
-    h4 {
-      font-size: 0.85rem;
-      color: var(--orange);
-      letter-spacing: 0.06em;
-      margin: 0.7rem 0 0.3rem;
-    }
-
-    .header-stats {
-      color: var(--text-dim);
-      font-size: 0.95rem;
-      margin: 0.2rem 0 1.2rem;
-      letter-spacing: 0.03em;
-    }
+    .header-stats { color: var(--text-dim); font-size: 0.95rem; margin: 0.2rem 0 1.2rem; letter-spacing: 0.03em; }
 
     section { margin-bottom: 1.5rem; }
 
@@ -105,16 +111,15 @@
       margin: 0.6rem 0;
       background: var(--bg-panel);
       border: 1px solid var(--border);
-      box-shadow: 0 0 0 1px rgba(241, 194, 50, 0.05) inset;
     }
     th, td {
       padding: 0.35rem 0.7rem;
-      border-bottom: 1px solid rgba(241, 194, 50, 0.08);
+      border-bottom: 1px solid rgba(196, 165, 90, 0.08);
       text-align: left;
       vertical-align: top;
     }
     th {
-      background: rgba(241, 194, 50, 0.12);
+      background: rgba(196, 165, 90, 0.10);
       border-bottom: 2px solid var(--gold-dim);
       color: var(--gold);
       text-transform: uppercase;
@@ -125,19 +130,12 @@
     }
     tbody tr:nth-child(even) { background: var(--bg-zebra); }
     tbody tr:hover { background: var(--bg-hover); }
-    th.sort-header {
-      cursor: pointer;
-      user-select: none;
-    }
-    th.sort-header:hover { background: rgba(241, 194, 50, 0.22); }
-    th.sort-header .arrow {
-      font-size: 0.7rem;
-      color: var(--text-dim);
-      margin-left: 0.25rem;
-    }
+    th.sort-header { cursor: pointer; user-select: none; }
+    th.sort-header:hover { background: rgba(196, 165, 90, 0.18); }
+    th.sort-header .arrow { font-size: 0.7rem; color: var(--text-dim); margin-left: 0.25rem; }
     th.sort-header .arrow.active { color: var(--gold-bright); }
 
-    /* ---------- Panels (chart wrappers) ---------- */
+    /* ---------- Chart panels ---------- */
     .chart {
       margin: 1rem 0;
       background: var(--bg-panel);
@@ -146,26 +144,19 @@
       border-left: 3px solid var(--gold-dim);
     }
     .chart h3 { margin-top: 0.1rem; }
-
     .chart svg text { fill: var(--text) !important; }
     .chart figure { margin: 0; }
 
-    /* ---------- Player section side-by-side row ---------- */
-    .charts-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
+    .charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .charts-row .chart { margin: 0; }
 
-    /* ---------- Faction swatch ---------- */
     .faction-swatch {
       display: inline-block;
       width: 10px; height: 10px;
       margin-right: 6px;
       border-radius: 2px;
       border: 1px solid rgba(0, 0, 0, 0.4);
-      box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
       vertical-align: middle;
     }
 
@@ -189,13 +180,9 @@
       background: var(--bg-hover);
       border-color: var(--gold);
       border-left-color: var(--gold-bright);
-      box-shadow: 0 0 16px rgba(241, 194, 50, 0.15);
+      box-shadow: 0 0 12px rgba(196, 165, 90, 0.12);
     }
-    .game-card h3 {
-      margin: 0 0 0.3rem;
-      font-size: 0.95rem;
-      color: var(--gold-bright);
-    }
+    .game-card h3 { margin: 0 0 0.3rem; font-size: 0.95rem; color: var(--gold-bright); }
     .game-card .anecdote {
       font-style: italic;
       color: var(--text-dim);
@@ -203,12 +190,7 @@
       margin-bottom: 0.4rem;
       font-size: 0.88rem;
     }
-    .game-card .meta {
-      color: var(--text-dim);
-      font-size: 0.82rem;
-      margin-top: 0.2rem;
-      letter-spacing: 0.02em;
-    }
+    .game-card .meta { color: var(--text-dim); font-size: 0.82rem; margin-top: 0.2rem; letter-spacing: 0.02em; }
 
     /* ---------- Expansion badges ---------- */
     .exp-badge {
@@ -223,8 +205,8 @@
       font-weight: bold;
       font-family: 'Russo One', sans-serif;
     }
-    .exp-base { background: rgba(95, 208, 216, 0.2); color: var(--cyan); border: 1px solid rgba(95, 208, 216, 0.4); }
-    .exp-pok  { background: rgba(245, 159, 58, 0.2); color: var(--orange); border: 1px solid rgba(245, 159, 58, 0.4); }
+    .exp-base { background: rgba(126, 184, 191, 0.18); color: var(--cyan); border: 1px solid rgba(126, 184, 191, 0.35); }
+    .exp-pok  { background: rgba(216, 148, 90, 0.18); color: var(--orange); border: 1px solid rgba(216, 148, 90, 0.35); }
 
     /* ---------- Game detail ---------- */
     #game-detail {
@@ -242,13 +224,13 @@
 
     .cat-tag {
       display: inline-block;
-      background: rgba(241, 194, 50, 0.1);
+      background: rgba(196, 165, 90, 0.08);
       color: var(--gold-dim);
       padding: 0 0.4rem;
       border-radius: 2px;
       font-size: 0.75rem;
       margin-left: 0.3rem;
-      border: 1px solid rgba(241, 194, 50, 0.2);
+      border: 1px solid rgba(196, 165, 90, 0.18);
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
@@ -274,31 +256,19 @@
       user-select: none;
       transition: all 0.12s;
     }
-    .tab:hover {
-      background: var(--bg-hover);
-      color: var(--gold-bright);
-    }
+    .tab:hover { background: var(--bg-hover); color: var(--gold-bright); }
     .tab.active {
       background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
-      color: var(--bg-deep);
+      color: var(--h2-text);
       border-color: var(--gold);
       margin-bottom: -1px;
-      box-shadow: 0 0 12px rgba(241, 194, 50, 0.35);
+      box-shadow: 0 0 8px rgba(196, 165, 90, 0.20);
     }
 
     /* ---------- Timeline row ---------- */
-    .timeline-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
+    .timeline-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .timeline-row .chart { margin: 0; }
 
-    /* Plot SVG legend text */
-    .chart svg [class*="plot-legend"] text,
-    figure[class*="plot"] text { fill: var(--text); }
-
-    /* Empty-state */
     .empty {
       color: var(--text-dim);
       font-style: italic;
@@ -321,9 +291,7 @@
       width: 96px;
       height: 96px;
       flex-shrink: 0;
-      filter:
-        drop-shadow(0 0 14px rgba(241, 194, 50, 0.5))
-        drop-shadow(0 0 30px rgba(241, 194, 50, 0.15));
+      filter: drop-shadow(0 0 10px rgba(196, 165, 90, 0.25));
     }
     .brand-text { display: flex; flex-direction: column; gap: 0.15rem; }
     .brand-collective {
@@ -332,7 +300,6 @@
       letter-spacing: 0.22em;
       font-size: 0.95rem;
       color: var(--cyan);
-      text-shadow: 0 0 8px rgba(95, 208, 216, 0.35);
     }
     .brand-title {
       font-family: 'Russo One', sans-serif;
@@ -341,14 +308,28 @@
       color: var(--gold-bright);
       font-size: 2.1rem;
       line-height: 1;
-      text-shadow: 0 0 14px rgba(241, 194, 50, 0.5), 0 0 28px rgba(241, 194, 50, 0.15);
     }
-    .brand-subtitle {
-      color: var(--text-dim);
-      font-size: 0.9rem;
-      letter-spacing: 0.04em;
-      margin-top: 0.25rem;
+    .brand-subtitle { color: var(--text-dim); font-size: 0.9rem; letter-spacing: 0.04em; margin-top: 0.25rem; }
+
+    .theme-toggle {
+      margin-left: auto;
+      align-self: flex-start;
+      padding: 0.4rem 0.7rem;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      color: var(--gold);
+      font-size: 1.15rem;
+      cursor: pointer;
+      font-family: 'Russo One', sans-serif;
+      line-height: 1;
+      transition: all 0.12s;
     }
+    .theme-toggle:hover {
+      background: var(--bg-hover);
+      color: var(--gold-bright);
+      border-color: var(--gold);
+    }
+
     @media (max-width: 600px) {
       .brand-logo { width: 64px; height: 64px; }
       .brand-title { font-size: 1.5rem; }
@@ -364,6 +345,7 @@
       <div class="brand-title">Летопись галактики</div>
       <div class="brand-subtitle" id="header-stats">Загрузка…</div>
     </div>
+    <button class="theme-toggle" id="theme-toggle" type="button" title="Переключить тему">☾</button>
   </header>
 
   <nav class="tabs" id="tabs">
@@ -744,288 +726,288 @@
     },
     {
       "objective_id": "OB024",
+      "name": "Поддержка претендента (отдано)",
+      "category": "support_given",
+      "vp_value": 0,
+      "expansion": null
+    },
+    {
+      "objective_id": "OB025",
       "name": "Сооружения на 5 планетах",
       "category": "public_2",
       "vp_value": 2,
       "expansion": null
     },
     {
-      "objective_id": "OB025",
+      "objective_id": "OB026",
       "name": "6 планет вне родной системы",
       "category": "public_1",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB026",
+      "objective_id": "OB027",
       "name": "3 влияния, 3 ресурса, 3 товара",
       "category": "public_1",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB027",
+      "objective_id": "OB028",
       "name": "2 технологии в 2 цветах",
       "category": "public_1",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB028",
+      "objective_id": "OB029",
       "name": "8 кораблей в 1 системе",
       "category": "public_2",
       "vp_value": 2,
       "expansion": null
     },
     {
-      "objective_id": "OB029",
+      "objective_id": "OB030",
       "name": "Планета в системе другого",
       "category": "secret",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB030",
+      "objective_id": "OB031",
       "name": "Корбаль в системе с базой",
       "category": "secret",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB031",
+      "objective_id": "OB032",
       "name": "Производство 8",
       "category": "secret",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB032",
+      "objective_id": "OB033",
       "name": "Отряд в Нексусе",
       "category": "secret",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB033",
+      "objective_id": "OB034",
       "name": "12 влияния",
       "category": "secret",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB034",
+      "objective_id": "OB035",
       "name": "5 дредноутов",
       "category": "secret",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB035",
+      "objective_id": "OB036",
       "name": "Флагман на поле",
       "category": "public_1",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB036",
+      "objective_id": "OB037",
       "name": "3 планеты со специализацией",
       "category": "public_1",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB037",
+      "objective_id": "OB038",
       "name": "2 планеты с прикреплениями",
       "category": "public_1",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB038",
+      "objective_id": "OB039",
       "name": "3 технологии улучшения",
       "category": "public_2",
       "vp_value": 2,
       "expansion": null
     },
     {
-      "objective_id": "OB039",
+      "objective_id": "OB040",
       "name": "Победа с флагманом",
       "category": "secret",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB040",
+      "objective_id": "OB041",
       "name": "Уничтожить флагман",
       "category": "secret",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB041",
+      "objective_id": "OB042",
       "name": "3 корабля в конце боя",
       "category": "secret",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB042",
+      "objective_id": "OB043",
       "name": "Бомбардировка",
       "category": "secret",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB043",
+      "objective_id": "OB044",
       "name": "4 системы с аномалиями",
       "category": "public_2",
       "vp_value": 2,
       "expansion": null
     },
     {
-      "objective_id": "OB044",
+      "objective_id": "OB045",
       "name": "2 технологии улучшения",
       "category": "public_1",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB045",
+      "objective_id": "OB046",
       "name": "Бой в родной",
       "category": "secret",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB046",
+      "objective_id": "OB047",
       "name": "Бой в аномалии",
       "category": "secret",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB047",
+      "objective_id": "OB048",
       "name": "Выбран на голосовании",
       "category": "secret",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB048",
+      "objective_id": "OB049",
       "name": "2 фрагмента",
       "category": "secret",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB049",
+      "objective_id": "OB050",
       "name": "Заградительный огонь",
       "category": "secret",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB050",
+      "objective_id": "OB051",
       "name": "6 планет одного типа",
       "category": "public_2",
       "vp_value": 2,
       "expansion": null
     },
     {
-      "objective_id": "OB051",
+      "objective_id": "OB052",
       "name": "5 сооружений вне родной",
       "category": "public_2",
       "vp_value": 2,
       "expansion": null
     },
     {
-      "objective_id": "OB052",
+      "objective_id": "OB053",
       "name": "6 влияния 6 ресурсов 6 товаров",
       "category": "public_2",
       "vp_value": 2,
       "expansion": null
     },
     {
-      "objective_id": "OB053",
+      "objective_id": "OB054",
       "name": "Потратить 8 влияния",
       "category": "public_1",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB054",
+      "objective_id": "OB055",
       "name": "3 планеты с тех. спец.",
       "category": "public_1",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB055",
+      "objective_id": "OB056",
       "name": "2 системы у Мекатола",
       "category": "public_1",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB056",
+      "objective_id": "OB057",
       "name": "Потратить 6 жетонов",
       "category": "public_2",
       "vp_value": 2,
       "expansion": null
     },
     {
-      "objective_id": "OB057",
+      "objective_id": "OB058",
       "name": "4 промышленные планеты",
       "category": "secret",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB058",
+      "objective_id": "OB059",
       "name": "Политика (Осколок Власти)",
       "category": "agenda",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB059",
-      "name": "Политика (Корона Эфмидии)",
+      "objective_id": "OB060",
+      "name": "Политика (Корона Эмфидии)",
       "category": "agenda",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB060",
+      "objective_id": "OB061",
       "name": "Потратить 3 жетона",
       "category": "public_1",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB061",
+      "objective_id": "OB062",
       "name": "Потратить 10 товаров",
       "category": "public_2",
       "vp_value": 2,
       "expansion": null
     },
     {
-      "objective_id": "OB062",
+      "objective_id": "OB063",
       "name": "Потратить 16 ресурсов",
       "category": "public_2",
       "vp_value": 2,
       "expansion": null
     },
     {
-      "objective_id": "OB063",
+      "objective_id": "OB064",
       "name": "Корабль рядом с родной",
       "category": "secret",
-      "vp_value": 1,
-      "expansion": null
-    },
-    {
-      "objective_id": "OB064",
-      "name": "Политика (Корона Эмфидии)",
-      "category": "agenda",
       "vp_value": 1,
       "expansion": null
     },
@@ -1087,72 +1069,51 @@
     },
     {
       "objective_id": "OB073",
-      "name": "Политика (Осколки власти)",
-      "category": "agenda",
-      "vp_value": 1,
-      "expansion": null
-    },
-    {
-      "objective_id": "OB074",
       "name": "2 технологии в 4 цветах",
       "category": "public_2",
       "vp_value": 2,
       "expansion": null
     },
     {
-      "objective_id": "OB075",
+      "objective_id": "OB074",
       "name": "Потратить 16 влияния",
       "category": "public_2",
       "vp_value": 2,
       "expansion": null
     },
     {
-      "objective_id": "OB076",
+      "objective_id": "OB075",
       "name": "11 планет вне родной",
       "category": "public_2",
       "vp_value": 2,
       "expansion": null
     },
     {
-      "objective_id": "OB077",
+      "objective_id": "OB076",
       "name": "1 корабль в 6 системах",
       "category": "secret",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB078",
+      "objective_id": "OB077",
       "name": "Политика (Бунт)",
       "category": "agenda",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB079",
+      "objective_id": "OB078",
       "name": "Мекатол и 3 корабля",
       "category": "secret",
       "vp_value": 1,
       "expansion": null
     },
     {
-      "objective_id": "OB080",
-      "name": "4 псо",
-      "category": "secret",
-      "vp_value": 1,
-      "expansion": null
-    },
-    {
-      "objective_id": "OB081",
+      "objective_id": "OB079",
       "name": "Политика (Ростки Империи)",
       "category": "agenda",
       "vp_value": 1,
-      "expansion": null
-    },
-    {
-      "objective_id": "OB082",
-      "name": "Поддержка претендента (отдано)",
-      "category": "support_given",
-      "vp_value": 0,
       "expansion": null
     }
   ],
@@ -1198,7 +1159,7 @@
       "year_number": 11,
       "title": "Большие пушки и два метких истребителя",
       "vp_threshold": 10,
-      "player_count": 5,
+      "player_count": 3,
       "expansion": "Base",
       "notes": null
     },
@@ -1216,7 +1177,7 @@
       "year_number": 9,
       "title": "Марионеточное правительство и возвращение смертельно безопасной черной жижи",
       "vp_threshold": 10,
-      "player_count": 5,
+      "player_count": 4,
       "expansion": "Base",
       "notes": null
     },
@@ -1225,7 +1186,7 @@
       "year_number": 8,
       "title": "Беспристрастный председатель, фотосинтез и демилитаризация Кукана",
       "vp_threshold": 14,
-      "player_count": 5,
+      "player_count": 3,
       "expansion": "Base",
       "notes": null
     },
@@ -1234,7 +1195,7 @@
       "year_number": 7,
       "title": "Махач во славу Короны",
       "vp_threshold": 10,
-      "player_count": 5,
+      "player_count": 4,
       "expansion": "Base",
       "notes": null
     },
@@ -1243,7 +1204,7 @@
       "year_number": 6,
       "title": "Минские соглашения и зарубы на Мекатоле",
       "vp_threshold": 14,
-      "player_count": 5,
+      "player_count": 3,
       "expansion": "Base",
       "notes": null
     },
@@ -1261,7 +1222,7 @@
       "year_number": 4,
       "title": "Змеи, лестницы и зов овощей",
       "vp_threshold": 15,
-      "player_count": 5,
+      "player_count": 3,
       "expansion": "Base",
       "notes": null
     },
@@ -1270,7 +1231,7 @@
       "year_number": 3,
       "title": "Пидорский синдикат",
       "vp_threshold": 10,
-      "player_count": 5,
+      "player_count": 4,
       "expansion": "Base",
       "notes": null
     },
@@ -2464,64 +2425,82 @@
       "vp_awarded": 1
     },
     {
+      "scored_id": "SC0044",
+      "game_id": "GA001",
+      "player_id": "PL001",
+      "faction_id": "FA001",
+      "objective_id": "OB023",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0045",
+      "game_id": "GA001",
+      "player_id": "PL005",
+      "faction_id": "FA005",
+      "objective_id": "OB024",
+      "count": 1,
+      "vp_awarded": 0
+    },
+    {
       "scored_id": "SC0046",
-      "game_id": "GA002",
+      "game_id": "GA001",
       "player_id": "PL002",
-      "faction_id": "FA009",
-      "objective_id": "OB025",
+      "faction_id": "FA002",
+      "objective_id": "OB023",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0047",
-      "game_id": "GA002",
+      "game_id": "GA001",
       "player_id": "PL003",
-      "faction_id": "FA008",
-      "objective_id": "OB025",
+      "faction_id": "FA003",
+      "objective_id": "OB024",
       "count": 1,
-      "vp_awarded": 1
+      "vp_awarded": 0
     },
     {
       "scored_id": "SC0048",
       "game_id": "GA002",
-      "player_id": "PL004",
-      "faction_id": "FA007",
-      "objective_id": "OB025",
+      "player_id": "PL002",
+      "faction_id": "FA009",
+      "objective_id": "OB026",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0049",
       "game_id": "GA002",
-      "player_id": "PL001",
-      "faction_id": "FA010",
-      "objective_id": "OB025",
+      "player_id": "PL003",
+      "faction_id": "FA008",
+      "objective_id": "OB026",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0050",
       "game_id": "GA002",
-      "player_id": "PL002",
-      "faction_id": "FA009",
-      "objective_id": "OB003",
+      "player_id": "PL004",
+      "faction_id": "FA007",
+      "objective_id": "OB026",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0051",
       "game_id": "GA002",
-      "player_id": "PL003",
-      "faction_id": "FA008",
-      "objective_id": "OB003",
+      "player_id": "PL001",
+      "faction_id": "FA010",
+      "objective_id": "OB026",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0052",
       "game_id": "GA002",
-      "player_id": "PL005",
-      "faction_id": "FA006",
+      "player_id": "PL002",
+      "faction_id": "FA009",
       "objective_id": "OB003",
       "count": 1,
       "vp_awarded": 1
@@ -2529,8 +2508,8 @@
     {
       "scored_id": "SC0053",
       "game_id": "GA002",
-      "player_id": "PL004",
-      "faction_id": "FA007",
+      "player_id": "PL003",
+      "faction_id": "FA008",
       "objective_id": "OB003",
       "count": 1,
       "vp_awarded": 1
@@ -2538,8 +2517,8 @@
     {
       "scored_id": "SC0054",
       "game_id": "GA002",
-      "player_id": "PL001",
-      "faction_id": "FA010",
+      "player_id": "PL005",
+      "faction_id": "FA006",
       "objective_id": "OB003",
       "count": 1,
       "vp_awarded": 1
@@ -2547,53 +2526,53 @@
     {
       "scored_id": "SC0055",
       "game_id": "GA002",
-      "player_id": "PL002",
-      "faction_id": "FA009",
-      "objective_id": "OB026",
+      "player_id": "PL004",
+      "faction_id": "FA007",
+      "objective_id": "OB003",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0056",
       "game_id": "GA002",
-      "player_id": "PL003",
-      "faction_id": "FA008",
-      "objective_id": "OB026",
+      "player_id": "PL001",
+      "faction_id": "FA010",
+      "objective_id": "OB003",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0057",
       "game_id": "GA002",
-      "player_id": "PL005",
-      "faction_id": "FA006",
-      "objective_id": "OB026",
+      "player_id": "PL002",
+      "faction_id": "FA009",
+      "objective_id": "OB027",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0058",
       "game_id": "GA002",
-      "player_id": "PL004",
-      "faction_id": "FA007",
-      "objective_id": "OB026",
+      "player_id": "PL003",
+      "faction_id": "FA008",
+      "objective_id": "OB027",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0059",
       "game_id": "GA002",
-      "player_id": "PL001",
-      "faction_id": "FA010",
-      "objective_id": "OB026",
+      "player_id": "PL005",
+      "faction_id": "FA006",
+      "objective_id": "OB027",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0060",
       "game_id": "GA002",
-      "player_id": "PL002",
-      "faction_id": "FA009",
+      "player_id": "PL004",
+      "faction_id": "FA007",
       "objective_id": "OB027",
       "count": 1,
       "vp_awarded": 1
@@ -2601,15 +2580,6 @@
     {
       "scored_id": "SC0061",
       "game_id": "GA002",
-      "player_id": "PL004",
-      "faction_id": "FA007",
-      "objective_id": "OB027",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0062",
-      "game_id": "GA002",
       "player_id": "PL001",
       "faction_id": "FA010",
       "objective_id": "OB027",
@@ -2617,7 +2587,34 @@
       "vp_awarded": 1
     },
     {
+      "scored_id": "SC0062",
+      "game_id": "GA002",
+      "player_id": "PL002",
+      "faction_id": "FA009",
+      "objective_id": "OB028",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
       "scored_id": "SC0063",
+      "game_id": "GA002",
+      "player_id": "PL004",
+      "faction_id": "FA007",
+      "objective_id": "OB028",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0064",
+      "game_id": "GA002",
+      "player_id": "PL001",
+      "faction_id": "FA010",
+      "objective_id": "OB028",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0065",
       "game_id": "GA002",
       "player_id": "PL003",
       "faction_id": "FA008",
@@ -2626,7 +2623,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0064",
+      "scored_id": "SC0066",
       "game_id": "GA002",
       "player_id": "PL005",
       "faction_id": "FA006",
@@ -2635,25 +2632,25 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0065",
+      "scored_id": "SC0067",
       "game_id": "GA002",
       "player_id": "PL004",
       "faction_id": "FA007",
-      "objective_id": "OB028",
+      "objective_id": "OB029",
       "count": 1,
       "vp_awarded": 2
     },
     {
-      "scored_id": "SC0066",
+      "scored_id": "SC0068",
       "game_id": "GA002",
       "player_id": "PL002",
       "faction_id": "FA009",
-      "objective_id": "OB029",
+      "objective_id": "OB030",
       "count": 1,
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0067",
+      "scored_id": "SC0069",
       "game_id": "GA002",
       "player_id": "PL003",
       "faction_id": "FA008",
@@ -2662,16 +2659,16 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0068",
+      "scored_id": "SC0070",
       "game_id": "GA002",
       "player_id": "PL005",
       "faction_id": "FA006",
-      "objective_id": "OB030",
+      "objective_id": "OB031",
       "count": 1,
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0069",
+      "scored_id": "SC0071",
       "game_id": "GA002",
       "player_id": "PL004",
       "faction_id": "FA007",
@@ -2680,25 +2677,25 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0070",
+      "scored_id": "SC0072",
       "game_id": "GA002",
       "player_id": "PL001",
       "faction_id": "FA010",
-      "objective_id": "OB031",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0071",
-      "game_id": "GA002",
-      "player_id": "PL002",
-      "faction_id": "FA009",
       "objective_id": "OB032",
       "count": 1,
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0072",
+      "scored_id": "SC0073",
+      "game_id": "GA002",
+      "player_id": "PL002",
+      "faction_id": "FA009",
+      "objective_id": "OB033",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0074",
       "game_id": "GA002",
       "player_id": "PL003",
       "faction_id": "FA008",
@@ -2707,29 +2704,11 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0073",
+      "scored_id": "SC0075",
       "game_id": "GA002",
       "player_id": "PL005",
       "faction_id": "FA006",
-      "objective_id": "OB033",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0074",
-      "game_id": "GA002",
-      "player_id": "PL004",
-      "faction_id": "FA007",
       "objective_id": "OB034",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0075",
-      "game_id": "GA002",
-      "player_id": "PL003",
-      "faction_id": "FA008",
-      "objective_id": "OB019",
       "count": 1,
       "vp_awarded": 1
     },
@@ -2738,7 +2717,7 @@
       "game_id": "GA002",
       "player_id": "PL004",
       "faction_id": "FA007",
-      "objective_id": "OB020",
+      "objective_id": "OB035",
       "count": 1,
       "vp_awarded": 1
     },
@@ -2747,150 +2726,186 @@
       "game_id": "GA002",
       "player_id": "PL003",
       "faction_id": "FA008",
+      "objective_id": "OB019",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0078",
+      "game_id": "GA002",
+      "player_id": "PL004",
+      "faction_id": "FA007",
+      "objective_id": "OB020",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0079",
+      "game_id": "GA002",
+      "player_id": "PL003",
+      "faction_id": "FA008",
       "objective_id": "OB022",
       "count": 1,
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0082",
-      "game_id": "GA003",
+      "scored_id": "SC0080",
+      "game_id": "GA002",
       "player_id": "PL002",
+      "faction_id": "FA009",
+      "objective_id": "OB023",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0081",
+      "game_id": "GA002",
+      "player_id": "PL001",
+      "faction_id": "FA010",
+      "objective_id": "OB024",
+      "count": 1,
+      "vp_awarded": 0
+    },
+    {
+      "scored_id": "SC0082",
+      "game_id": "GA002",
+      "player_id": "PL005",
       "faction_id": "FA006",
-      "objective_id": "OB001",
+      "objective_id": "OB023",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0083",
-      "game_id": "GA003",
+      "game_id": "GA002",
       "player_id": "PL003",
-      "faction_id": "FA013",
-      "objective_id": "OB001",
+      "faction_id": "FA008",
+      "objective_id": "OB024",
       "count": 1,
-      "vp_awarded": 1
+      "vp_awarded": 0
     },
     {
       "scored_id": "SC0084",
-      "game_id": "GA003",
+      "game_id": "GA002",
       "player_id": "PL004",
-      "faction_id": "FA012",
-      "objective_id": "OB001",
+      "faction_id": "FA007",
+      "objective_id": "OB023",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0085",
-      "game_id": "GA003",
+      "game_id": "GA002",
       "player_id": "PL005",
-      "faction_id": "FA014",
-      "objective_id": "OB001",
+      "faction_id": "FA006",
+      "objective_id": "OB024",
       "count": 1,
-      "vp_awarded": 1
+      "vp_awarded": 0
     },
     {
       "scored_id": "SC0086",
-      "game_id": "GA003",
+      "game_id": "GA002",
       "player_id": "PL001",
-      "faction_id": "FA011",
-      "objective_id": "OB001",
+      "faction_id": "FA010",
+      "objective_id": "OB023",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0087",
-      "game_id": "GA003",
+      "game_id": "GA002",
       "player_id": "PL002",
-      "faction_id": "FA006",
-      "objective_id": "OB025",
+      "faction_id": "FA009",
+      "objective_id": "OB024",
       "count": 1,
-      "vp_awarded": 1
+      "vp_awarded": 0
     },
     {
       "scored_id": "SC0088",
       "game_id": "GA003",
-      "player_id": "PL003",
-      "faction_id": "FA013",
-      "objective_id": "OB025",
+      "player_id": "PL002",
+      "faction_id": "FA006",
+      "objective_id": "OB001",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0089",
       "game_id": "GA003",
-      "player_id": "PL005",
-      "faction_id": "FA014",
-      "objective_id": "OB025",
+      "player_id": "PL003",
+      "faction_id": "FA013",
+      "objective_id": "OB001",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0090",
       "game_id": "GA003",
-      "player_id": "PL001",
-      "faction_id": "FA011",
-      "objective_id": "OB025",
+      "player_id": "PL004",
+      "faction_id": "FA012",
+      "objective_id": "OB001",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0091",
       "game_id": "GA003",
-      "player_id": "PL002",
-      "faction_id": "FA006",
-      "objective_id": "OB035",
+      "player_id": "PL005",
+      "faction_id": "FA014",
+      "objective_id": "OB001",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0092",
       "game_id": "GA003",
-      "player_id": "PL003",
-      "faction_id": "FA013",
-      "objective_id": "OB035",
+      "player_id": "PL001",
+      "faction_id": "FA011",
+      "objective_id": "OB001",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0093",
       "game_id": "GA003",
-      "player_id": "PL004",
-      "faction_id": "FA012",
-      "objective_id": "OB035",
+      "player_id": "PL002",
+      "faction_id": "FA006",
+      "objective_id": "OB026",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0094",
       "game_id": "GA003",
-      "player_id": "PL005",
-      "faction_id": "FA014",
-      "objective_id": "OB035",
+      "player_id": "PL003",
+      "faction_id": "FA013",
+      "objective_id": "OB026",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0095",
       "game_id": "GA003",
-      "player_id": "PL001",
-      "faction_id": "FA011",
-      "objective_id": "OB035",
+      "player_id": "PL005",
+      "faction_id": "FA014",
+      "objective_id": "OB026",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0096",
       "game_id": "GA003",
-      "player_id": "PL002",
-      "faction_id": "FA006",
-      "objective_id": "OB036",
+      "player_id": "PL001",
+      "faction_id": "FA011",
+      "objective_id": "OB026",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0097",
       "game_id": "GA003",
-      "player_id": "PL005",
-      "faction_id": "FA014",
+      "player_id": "PL002",
+      "faction_id": "FA006",
       "objective_id": "OB036",
       "count": 1,
       "vp_awarded": 1
@@ -2898,6 +2913,33 @@
     {
       "scored_id": "SC0098",
       "game_id": "GA003",
+      "player_id": "PL003",
+      "faction_id": "FA013",
+      "objective_id": "OB036",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0099",
+      "game_id": "GA003",
+      "player_id": "PL004",
+      "faction_id": "FA012",
+      "objective_id": "OB036",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0100",
+      "game_id": "GA003",
+      "player_id": "PL005",
+      "faction_id": "FA014",
+      "objective_id": "OB036",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0101",
+      "game_id": "GA003",
       "player_id": "PL001",
       "faction_id": "FA011",
       "objective_id": "OB036",
@@ -2905,7 +2947,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0099",
+      "scored_id": "SC0102",
       "game_id": "GA003",
       "player_id": "PL002",
       "faction_id": "FA006",
@@ -2914,25 +2956,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0100",
-      "game_id": "GA003",
-      "player_id": "PL003",
-      "faction_id": "FA013",
-      "objective_id": "OB037",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0101",
-      "game_id": "GA003",
-      "player_id": "PL004",
-      "faction_id": "FA012",
-      "objective_id": "OB037",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0102",
+      "scored_id": "SC0103",
       "game_id": "GA003",
       "player_id": "PL005",
       "faction_id": "FA014",
@@ -2941,7 +2965,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0103",
+      "scored_id": "SC0104",
       "game_id": "GA003",
       "player_id": "PL001",
       "faction_id": "FA011",
@@ -2950,34 +2974,79 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0104",
-      "game_id": "GA003",
-      "player_id": "PL004",
-      "faction_id": "FA012",
-      "objective_id": "OB038",
-      "count": 1,
-      "vp_awarded": 2
-    },
-    {
       "scored_id": "SC0105",
       "game_id": "GA003",
-      "player_id": "PL001",
-      "faction_id": "FA011",
+      "player_id": "PL002",
+      "faction_id": "FA006",
       "objective_id": "OB038",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0106",
       "game_id": "GA003",
-      "player_id": "PL002",
-      "faction_id": "FA006",
-      "objective_id": "OB033",
+      "player_id": "PL003",
+      "faction_id": "FA013",
+      "objective_id": "OB038",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0107",
+      "game_id": "GA003",
+      "player_id": "PL004",
+      "faction_id": "FA012",
+      "objective_id": "OB038",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0108",
+      "game_id": "GA003",
+      "player_id": "PL005",
+      "faction_id": "FA014",
+      "objective_id": "OB038",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0109",
+      "game_id": "GA003",
+      "player_id": "PL001",
+      "faction_id": "FA011",
+      "objective_id": "OB038",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0110",
+      "game_id": "GA003",
+      "player_id": "PL004",
+      "faction_id": "FA012",
+      "objective_id": "OB039",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0111",
+      "game_id": "GA003",
+      "player_id": "PL001",
+      "faction_id": "FA011",
+      "objective_id": "OB039",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0112",
+      "game_id": "GA003",
+      "player_id": "PL002",
+      "faction_id": "FA006",
+      "objective_id": "OB034",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0113",
       "game_id": "GA003",
       "player_id": "PL003",
       "faction_id": "FA013",
@@ -2986,7 +3055,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0108",
+      "scored_id": "SC0114",
       "game_id": "GA003",
       "player_id": "PL004",
       "faction_id": "FA012",
@@ -2995,7 +3064,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0109",
+      "scored_id": "SC0115",
       "game_id": "GA003",
       "player_id": "PL005",
       "faction_id": "FA014",
@@ -3004,16 +3073,16 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0110",
+      "scored_id": "SC0116",
       "game_id": "GA003",
       "player_id": "PL001",
       "faction_id": "FA011",
-      "objective_id": "OB039",
+      "objective_id": "OB040",
       "count": 1,
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0111",
+      "scored_id": "SC0117",
       "game_id": "GA003",
       "player_id": "PL002",
       "faction_id": "FA006",
@@ -3022,7 +3091,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0112",
+      "scored_id": "SC0118",
       "game_id": "GA003",
       "player_id": "PL004",
       "faction_id": "FA012",
@@ -3031,7 +3100,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0113",
+      "scored_id": "SC0119",
       "game_id": "GA003",
       "player_id": "PL005",
       "faction_id": "FA014",
@@ -3040,34 +3109,34 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0114",
+      "scored_id": "SC0120",
       "game_id": "GA003",
       "player_id": "PL001",
       "faction_id": "FA011",
-      "objective_id": "OB040",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0115",
-      "game_id": "GA003",
-      "player_id": "PL004",
-      "faction_id": "FA012",
       "objective_id": "OB041",
       "count": 1,
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0116",
+      "scored_id": "SC0121",
       "game_id": "GA003",
-      "player_id": "PL005",
-      "faction_id": "FA014",
+      "player_id": "PL004",
+      "faction_id": "FA012",
       "objective_id": "OB042",
       "count": 1,
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0117",
+      "scored_id": "SC0122",
+      "game_id": "GA003",
+      "player_id": "PL005",
+      "faction_id": "FA014",
+      "objective_id": "OB043",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0123",
       "game_id": "GA003",
       "player_id": "PL001",
       "faction_id": "FA011",
@@ -3076,7 +3145,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0118",
+      "scored_id": "SC0124",
       "game_id": "GA003",
       "player_id": "PL003",
       "faction_id": "FA013",
@@ -3085,7 +3154,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0119",
+      "scored_id": "SC0125",
       "game_id": "GA003",
       "player_id": "PL003",
       "faction_id": "FA013",
@@ -3094,127 +3163,91 @@
       "vp_awarded": 2
     },
     {
-      "scored_id": "SC0122",
-      "game_id": "GA004",
-      "player_id": "PL003",
-      "faction_id": "FA015",
-      "objective_id": "OB005",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0123",
-      "game_id": "GA004",
-      "player_id": "PL001",
-      "faction_id": "FA016",
-      "objective_id": "OB005",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0124",
-      "game_id": "GA004",
-      "player_id": "PL005",
-      "faction_id": "FA017",
-      "objective_id": "OB005",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0125",
-      "game_id": "GA004",
-      "player_id": "PL002",
-      "faction_id": "FA001",
-      "objective_id": "OB005",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
       "scored_id": "SC0126",
-      "game_id": "GA004",
-      "player_id": "PL004",
-      "faction_id": "FA003",
-      "objective_id": "OB005",
+      "game_id": "GA003",
+      "player_id": "PL002",
+      "faction_id": "FA006",
+      "objective_id": "OB023",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0127",
-      "game_id": "GA004",
+      "game_id": "GA003",
       "player_id": "PL004",
-      "faction_id": "FA003",
-      "objective_id": "OB036",
+      "faction_id": "FA012",
+      "objective_id": "OB024",
       "count": 1,
-      "vp_awarded": 1
+      "vp_awarded": 0
     },
     {
       "scored_id": "SC0128",
-      "game_id": "GA004",
-      "player_id": "PL003",
-      "faction_id": "FA015",
-      "objective_id": "OB044",
+      "game_id": "GA003",
+      "player_id": "PL004",
+      "faction_id": "FA012",
+      "objective_id": "OB023",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0129",
-      "game_id": "GA004",
-      "player_id": "PL001",
-      "faction_id": "FA016",
-      "objective_id": "OB044",
+      "game_id": "GA003",
+      "player_id": "PL002",
+      "faction_id": "FA006",
+      "objective_id": "OB024",
       "count": 1,
-      "vp_awarded": 1
+      "vp_awarded": 0
     },
     {
       "scored_id": "SC0130",
       "game_id": "GA004",
-      "player_id": "PL005",
-      "faction_id": "FA017",
-      "objective_id": "OB044",
+      "player_id": "PL003",
+      "faction_id": "FA015",
+      "objective_id": "OB005",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0131",
       "game_id": "GA004",
-      "player_id": "PL002",
-      "faction_id": "FA001",
-      "objective_id": "OB044",
+      "player_id": "PL001",
+      "faction_id": "FA016",
+      "objective_id": "OB005",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0132",
       "game_id": "GA004",
-      "player_id": "PL004",
-      "faction_id": "FA003",
-      "objective_id": "OB044",
+      "player_id": "PL005",
+      "faction_id": "FA017",
+      "objective_id": "OB005",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0133",
       "game_id": "GA004",
-      "player_id": "PL003",
-      "faction_id": "FA015",
-      "objective_id": "OB037",
+      "player_id": "PL002",
+      "faction_id": "FA001",
+      "objective_id": "OB005",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0134",
       "game_id": "GA004",
-      "player_id": "PL001",
-      "faction_id": "FA016",
-      "objective_id": "OB037",
+      "player_id": "PL004",
+      "faction_id": "FA003",
+      "objective_id": "OB005",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0135",
       "game_id": "GA004",
-      "player_id": "PL005",
-      "faction_id": "FA017",
+      "player_id": "PL004",
+      "faction_id": "FA003",
       "objective_id": "OB037",
       "count": 1,
       "vp_awarded": 1
@@ -3222,59 +3255,23 @@
     {
       "scored_id": "SC0136",
       "game_id": "GA004",
-      "player_id": "PL004",
-      "faction_id": "FA003",
-      "objective_id": "OB037",
+      "player_id": "PL003",
+      "faction_id": "FA015",
+      "objective_id": "OB045",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0137",
       "game_id": "GA004",
-      "player_id": "PL003",
-      "faction_id": "FA015",
-      "objective_id": "OB001",
+      "player_id": "PL001",
+      "faction_id": "FA016",
+      "objective_id": "OB045",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0138",
-      "game_id": "GA004",
-      "player_id": "PL002",
-      "faction_id": "FA001",
-      "objective_id": "OB001",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0139",
-      "game_id": "GA004",
-      "player_id": "PL004",
-      "faction_id": "FA003",
-      "objective_id": "OB001",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0140",
-      "game_id": "GA004",
-      "player_id": "PL003",
-      "faction_id": "FA015",
-      "objective_id": "OB007",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0141",
-      "game_id": "GA004",
-      "player_id": "PL001",
-      "faction_id": "FA016",
-      "objective_id": "OB011",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0142",
       "game_id": "GA004",
       "player_id": "PL005",
       "faction_id": "FA017",
@@ -3283,11 +3280,47 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0143",
+      "scored_id": "SC0139",
       "game_id": "GA004",
       "player_id": "PL002",
       "faction_id": "FA001",
-      "objective_id": "OB046",
+      "objective_id": "OB045",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0140",
+      "game_id": "GA004",
+      "player_id": "PL004",
+      "faction_id": "FA003",
+      "objective_id": "OB045",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0141",
+      "game_id": "GA004",
+      "player_id": "PL003",
+      "faction_id": "FA015",
+      "objective_id": "OB038",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0142",
+      "game_id": "GA004",
+      "player_id": "PL001",
+      "faction_id": "FA016",
+      "objective_id": "OB038",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0143",
+      "game_id": "GA004",
+      "player_id": "PL005",
+      "faction_id": "FA017",
+      "objective_id": "OB038",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3296,7 +3329,7 @@
       "game_id": "GA004",
       "player_id": "PL004",
       "faction_id": "FA003",
-      "objective_id": "OB047",
+      "objective_id": "OB038",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3305,16 +3338,16 @@
       "game_id": "GA004",
       "player_id": "PL003",
       "faction_id": "FA015",
-      "objective_id": "OB033",
+      "objective_id": "OB001",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0146",
       "game_id": "GA004",
-      "player_id": "PL001",
-      "faction_id": "FA016",
-      "objective_id": "OB031",
+      "player_id": "PL002",
+      "faction_id": "FA001",
+      "objective_id": "OB001",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3323,7 +3356,7 @@
       "game_id": "GA004",
       "player_id": "PL004",
       "faction_id": "FA003",
-      "objective_id": "OB041",
+      "objective_id": "OB001",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3332,7 +3365,7 @@
       "game_id": "GA004",
       "player_id": "PL003",
       "faction_id": "FA015",
-      "objective_id": "OB048",
+      "objective_id": "OB007",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3341,16 +3374,16 @@
       "game_id": "GA004",
       "player_id": "PL001",
       "faction_id": "FA016",
-      "objective_id": "OB049",
+      "objective_id": "OB011",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0150",
       "game_id": "GA004",
-      "player_id": "PL002",
-      "faction_id": "FA001",
-      "objective_id": "OB019",
+      "player_id": "PL005",
+      "faction_id": "FA017",
+      "objective_id": "OB046",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3359,97 +3392,106 @@
       "game_id": "GA004",
       "player_id": "PL002",
       "faction_id": "FA001",
-      "objective_id": "OB020",
-      "count": 4,
-      "vp_awarded": 4
+      "objective_id": "OB047",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0152",
+      "game_id": "GA004",
+      "player_id": "PL004",
+      "faction_id": "FA003",
+      "objective_id": "OB048",
+      "count": 1,
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0153",
-      "game_id": "GA005",
-      "player_id": "PL007",
-      "faction_id": "FA019",
-      "objective_id": "OB053",
+      "game_id": "GA004",
+      "player_id": "PL003",
+      "faction_id": "FA015",
+      "objective_id": "OB034",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0154",
-      "game_id": "GA005",
+      "game_id": "GA004",
       "player_id": "PL001",
-      "faction_id": "FA014",
-      "objective_id": "OB053",
+      "faction_id": "FA016",
+      "objective_id": "OB032",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0155",
-      "game_id": "GA005",
-      "player_id": "PL003",
-      "faction_id": "FA018",
-      "objective_id": "OB053",
+      "game_id": "GA004",
+      "player_id": "PL004",
+      "faction_id": "FA003",
+      "objective_id": "OB042",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0156",
-      "game_id": "GA005",
-      "player_id": "PL007",
-      "faction_id": "FA019",
-      "objective_id": "OB054",
+      "game_id": "GA004",
+      "player_id": "PL003",
+      "faction_id": "FA015",
+      "objective_id": "OB049",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0157",
-      "game_id": "GA005",
+      "game_id": "GA004",
       "player_id": "PL001",
-      "faction_id": "FA014",
-      "objective_id": "OB054",
+      "faction_id": "FA016",
+      "objective_id": "OB050",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0158",
-      "game_id": "GA005",
-      "player_id": "PL001",
-      "faction_id": "FA014",
-      "objective_id": "OB055",
+      "game_id": "GA004",
+      "player_id": "PL002",
+      "faction_id": "FA001",
+      "objective_id": "OB019",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0159",
-      "game_id": "GA005",
-      "player_id": "PL003",
-      "faction_id": "FA018",
-      "objective_id": "OB055",
-      "count": 1,
-      "vp_awarded": 1
+      "game_id": "GA004",
+      "player_id": "PL002",
+      "faction_id": "FA001",
+      "objective_id": "OB020",
+      "count": 4,
+      "vp_awarded": 4
     },
     {
       "scored_id": "SC0160",
-      "game_id": "GA005",
-      "player_id": "PL007",
-      "faction_id": "FA019",
-      "objective_id": "OB001",
+      "game_id": "GA004",
+      "player_id": "PL002",
+      "faction_id": "FA001",
+      "objective_id": "OB023",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0161",
-      "game_id": "GA005",
-      "player_id": "PL001",
-      "faction_id": "FA014",
-      "objective_id": "OB001",
+      "game_id": "GA004",
+      "player_id": "PL003",
+      "faction_id": "FA015",
+      "objective_id": "OB024",
       "count": 1,
-      "vp_awarded": 1
+      "vp_awarded": 0
     },
     {
       "scored_id": "SC0162",
       "game_id": "GA005",
-      "player_id": "PL003",
-      "faction_id": "FA018",
-      "objective_id": "OB001",
+      "player_id": "PL007",
+      "faction_id": "FA019",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3458,7 +3500,7 @@
       "game_id": "GA005",
       "player_id": "PL001",
       "faction_id": "FA014",
-      "objective_id": "OB044",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3467,25 +3509,25 @@
       "game_id": "GA005",
       "player_id": "PL003",
       "faction_id": "FA018",
-      "objective_id": "OB044",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0165",
       "game_id": "GA005",
-      "player_id": "PL003",
-      "faction_id": "FA018",
-      "objective_id": "OB056",
+      "player_id": "PL007",
+      "faction_id": "FA019",
+      "objective_id": "OB055",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0166",
       "game_id": "GA005",
-      "player_id": "PL007",
-      "faction_id": "FA019",
-      "objective_id": "OB057",
+      "player_id": "PL001",
+      "faction_id": "FA014",
+      "objective_id": "OB055",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3494,7 +3536,7 @@
       "game_id": "GA005",
       "player_id": "PL001",
       "faction_id": "FA014",
-      "objective_id": "OB042",
+      "objective_id": "OB056",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3503,7 +3545,7 @@
       "game_id": "GA005",
       "player_id": "PL003",
       "faction_id": "FA018",
-      "objective_id": "OB013",
+      "objective_id": "OB056",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3512,7 +3554,7 @@
       "game_id": "GA005",
       "player_id": "PL007",
       "faction_id": "FA019",
-      "objective_id": "OB016",
+      "objective_id": "OB001",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3521,16 +3563,16 @@
       "game_id": "GA005",
       "player_id": "PL001",
       "faction_id": "FA014",
-      "objective_id": "OB034",
+      "objective_id": "OB001",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0171",
       "game_id": "GA005",
-      "player_id": "PL001",
-      "faction_id": "FA014",
-      "objective_id": "OB019",
+      "player_id": "PL003",
+      "faction_id": "FA018",
+      "objective_id": "OB001",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3539,16 +3581,16 @@
       "game_id": "GA005",
       "player_id": "PL001",
       "faction_id": "FA014",
-      "objective_id": "OB020",
-      "count": 2,
-      "vp_awarded": 2
+      "objective_id": "OB045",
+      "count": 1,
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0173",
       "game_id": "GA005",
-      "player_id": "PL001",
-      "faction_id": "FA014",
-      "objective_id": "OB058",
+      "player_id": "PL003",
+      "faction_id": "FA018",
+      "objective_id": "OB045",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3557,97 +3599,97 @@
       "game_id": "GA005",
       "player_id": "PL003",
       "faction_id": "FA018",
-      "objective_id": "OB059",
+      "objective_id": "OB057",
       "count": 1,
-      "vp_awarded": 1
+      "vp_awarded": 2
     },
     {
       "scored_id": "SC0175",
-      "game_id": "GA006",
-      "player_id": "PL005",
-      "faction_id": "FA018",
-      "objective_id": "OB044",
+      "game_id": "GA005",
+      "player_id": "PL007",
+      "faction_id": "FA019",
+      "objective_id": "OB058",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0176",
-      "game_id": "GA006",
-      "player_id": "PL003",
-      "faction_id": "FA006",
-      "objective_id": "OB044",
+      "game_id": "GA005",
+      "player_id": "PL001",
+      "faction_id": "FA014",
+      "objective_id": "OB043",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0177",
-      "game_id": "GA006",
-      "player_id": "PL001",
-      "faction_id": "FA020",
-      "objective_id": "OB044",
+      "game_id": "GA005",
+      "player_id": "PL003",
+      "faction_id": "FA018",
+      "objective_id": "OB013",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0178",
-      "game_id": "GA006",
+      "game_id": "GA005",
       "player_id": "PL007",
-      "faction_id": "FA010",
-      "objective_id": "OB001",
+      "faction_id": "FA019",
+      "objective_id": "OB016",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0179",
-      "game_id": "GA006",
-      "player_id": "PL005",
-      "faction_id": "FA018",
-      "objective_id": "OB001",
+      "game_id": "GA005",
+      "player_id": "PL001",
+      "faction_id": "FA014",
+      "objective_id": "OB035",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0180",
-      "game_id": "GA006",
-      "player_id": "PL003",
-      "faction_id": "FA006",
-      "objective_id": "OB001",
+      "game_id": "GA005",
+      "player_id": "PL001",
+      "faction_id": "FA014",
+      "objective_id": "OB019",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0181",
-      "game_id": "GA006",
+      "game_id": "GA005",
       "player_id": "PL001",
-      "faction_id": "FA020",
-      "objective_id": "OB001",
-      "count": 1,
-      "vp_awarded": 1
+      "faction_id": "FA014",
+      "objective_id": "OB020",
+      "count": 2,
+      "vp_awarded": 2
     },
     {
       "scored_id": "SC0182",
-      "game_id": "GA006",
-      "player_id": "PL004",
-      "faction_id": "FA017",
-      "objective_id": "OB001",
+      "game_id": "GA005",
+      "player_id": "PL001",
+      "faction_id": "FA014",
+      "objective_id": "OB059",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0183",
-      "game_id": "GA006",
+      "game_id": "GA005",
       "player_id": "PL003",
-      "faction_id": "FA006",
-      "objective_id": "OB025",
+      "faction_id": "FA018",
+      "objective_id": "OB060",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0184",
       "game_id": "GA006",
-      "player_id": "PL001",
-      "faction_id": "FA020",
-      "objective_id": "OB025",
+      "player_id": "PL005",
+      "faction_id": "FA018",
+      "objective_id": "OB045",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3656,70 +3698,70 @@
       "game_id": "GA006",
       "player_id": "PL003",
       "faction_id": "FA006",
-      "objective_id": "OB060",
+      "objective_id": "OB045",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0186",
       "game_id": "GA006",
-      "player_id": "PL004",
-      "faction_id": "FA017",
-      "objective_id": "OB060",
+      "player_id": "PL001",
+      "faction_id": "FA020",
+      "objective_id": "OB045",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0187",
       "game_id": "GA006",
-      "player_id": "PL003",
-      "faction_id": "FA006",
-      "objective_id": "OB061",
+      "player_id": "PL007",
+      "faction_id": "FA010",
+      "objective_id": "OB001",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0188",
       "game_id": "GA006",
-      "player_id": "PL001",
-      "faction_id": "FA020",
-      "objective_id": "OB061",
+      "player_id": "PL005",
+      "faction_id": "FA018",
+      "objective_id": "OB001",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0189",
       "game_id": "GA006",
-      "player_id": "PL004",
-      "faction_id": "FA017",
-      "objective_id": "OB061",
+      "player_id": "PL003",
+      "faction_id": "FA006",
+      "objective_id": "OB001",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0190",
       "game_id": "GA006",
-      "player_id": "PL003",
-      "faction_id": "FA006",
-      "objective_id": "OB062",
+      "player_id": "PL001",
+      "faction_id": "FA020",
+      "objective_id": "OB001",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0191",
       "game_id": "GA006",
-      "player_id": "PL001",
-      "faction_id": "FA020",
-      "objective_id": "OB063",
+      "player_id": "PL004",
+      "faction_id": "FA017",
+      "objective_id": "OB001",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0192",
       "game_id": "GA006",
-      "player_id": "PL004",
-      "faction_id": "FA017",
-      "objective_id": "OB013",
+      "player_id": "PL003",
+      "faction_id": "FA006",
+      "objective_id": "OB026",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3728,7 +3770,7 @@
       "game_id": "GA006",
       "player_id": "PL001",
       "faction_id": "FA020",
-      "objective_id": "OB019",
+      "objective_id": "OB026",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3737,115 +3779,124 @@
       "game_id": "GA006",
       "player_id": "PL003",
       "faction_id": "FA006",
-      "objective_id": "OB020",
-      "count": 2,
-      "vp_awarded": 2
+      "objective_id": "OB061",
+      "count": 1,
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0195",
       "game_id": "GA006",
-      "player_id": "PL007",
-      "faction_id": "FA010",
+      "player_id": "PL004",
+      "faction_id": "FA017",
+      "objective_id": "OB061",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0196",
+      "game_id": "GA006",
+      "player_id": "PL003",
+      "faction_id": "FA006",
+      "objective_id": "OB062",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0197",
+      "game_id": "GA006",
+      "player_id": "PL001",
+      "faction_id": "FA020",
+      "objective_id": "OB062",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0198",
+      "game_id": "GA006",
+      "player_id": "PL004",
+      "faction_id": "FA017",
+      "objective_id": "OB062",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0199",
+      "game_id": "GA006",
+      "player_id": "PL003",
+      "faction_id": "FA006",
+      "objective_id": "OB063",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0200",
+      "game_id": "GA006",
+      "player_id": "PL001",
+      "faction_id": "FA020",
       "objective_id": "OB064",
       "count": 1,
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0197",
-      "game_id": "GA007",
-      "player_id": "PL001",
-      "faction_id": "FA015",
-      "objective_id": "OB001",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0198",
-      "game_id": "GA007",
-      "player_id": "PL002",
-      "faction_id": "FA007",
-      "objective_id": "OB001",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0199",
-      "game_id": "GA007",
-      "player_id": "PL003",
-      "faction_id": "FA022",
-      "objective_id": "OB001",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0200",
-      "game_id": "GA007",
-      "player_id": "PL001",
-      "faction_id": "FA015",
-      "objective_id": "OB002",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
       "scored_id": "SC0201",
-      "game_id": "GA007",
-      "player_id": "PL002",
-      "faction_id": "FA007",
-      "objective_id": "OB002",
+      "game_id": "GA006",
+      "player_id": "PL004",
+      "faction_id": "FA017",
+      "objective_id": "OB013",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0202",
-      "game_id": "GA007",
-      "player_id": "PL003",
-      "faction_id": "FA022",
-      "objective_id": "OB002",
+      "game_id": "GA006",
+      "player_id": "PL001",
+      "faction_id": "FA020",
+      "objective_id": "OB019",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0203",
-      "game_id": "GA007",
-      "player_id": "PL004",
-      "faction_id": "FA021",
-      "objective_id": "OB002",
-      "count": 1,
-      "vp_awarded": 1
+      "game_id": "GA006",
+      "player_id": "PL003",
+      "faction_id": "FA006",
+      "objective_id": "OB020",
+      "count": 2,
+      "vp_awarded": 2
     },
     {
       "scored_id": "SC0204",
-      "game_id": "GA007",
-      "player_id": "PL002",
-      "faction_id": "FA007",
-      "objective_id": "OB044",
+      "game_id": "GA006",
+      "player_id": "PL007",
+      "faction_id": "FA010",
+      "objective_id": "OB060",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0205",
-      "game_id": "GA007",
-      "player_id": "PL003",
-      "faction_id": "FA022",
-      "objective_id": "OB044",
+      "game_id": "GA006",
+      "player_id": "PL005",
+      "faction_id": "FA018",
+      "objective_id": "OB023",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0206",
-      "game_id": "GA007",
-      "player_id": "PL004",
-      "faction_id": "FA021",
-      "objective_id": "OB044",
+      "game_id": "GA006",
+      "player_id": "PL003",
+      "faction_id": "FA006",
+      "objective_id": "OB024",
       "count": 1,
-      "vp_awarded": 1
+      "vp_awarded": 0
     },
     {
       "scored_id": "SC0207",
       "game_id": "GA007",
       "player_id": "PL001",
       "faction_id": "FA015",
-      "objective_id": "OB060",
+      "objective_id": "OB001",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3854,7 +3905,7 @@
       "game_id": "GA007",
       "player_id": "PL002",
       "faction_id": "FA007",
-      "objective_id": "OB060",
+      "objective_id": "OB001",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3863,79 +3914,79 @@
       "game_id": "GA007",
       "player_id": "PL003",
       "faction_id": "FA022",
-      "objective_id": "OB060",
+      "objective_id": "OB001",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0210",
       "game_id": "GA007",
-      "player_id": "PL002",
-      "faction_id": "FA007",
-      "objective_id": "OB053",
+      "player_id": "PL001",
+      "faction_id": "FA015",
+      "objective_id": "OB002",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0211",
       "game_id": "GA007",
-      "player_id": "PL003",
-      "faction_id": "FA022",
-      "objective_id": "OB053",
+      "player_id": "PL002",
+      "faction_id": "FA007",
+      "objective_id": "OB002",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0212",
       "game_id": "GA007",
-      "player_id": "PL004",
-      "faction_id": "FA021",
-      "objective_id": "OB053",
+      "player_id": "PL003",
+      "faction_id": "FA022",
+      "objective_id": "OB002",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0213",
       "game_id": "GA007",
-      "player_id": "PL001",
-      "faction_id": "FA015",
-      "objective_id": "OB038",
+      "player_id": "PL004",
+      "faction_id": "FA021",
+      "objective_id": "OB002",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0214",
       "game_id": "GA007",
       "player_id": "PL002",
       "faction_id": "FA007",
-      "objective_id": "OB038",
+      "objective_id": "OB045",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0215",
       "game_id": "GA007",
       "player_id": "PL003",
       "faction_id": "FA022",
-      "objective_id": "OB038",
+      "objective_id": "OB045",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0216",
       "game_id": "GA007",
       "player_id": "PL004",
       "faction_id": "FA021",
-      "objective_id": "OB038",
+      "objective_id": "OB045",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0217",
       "game_id": "GA007",
       "player_id": "PL001",
       "faction_id": "FA015",
-      "objective_id": "OB042",
+      "objective_id": "OB061",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3944,7 +3995,7 @@
       "game_id": "GA007",
       "player_id": "PL002",
       "faction_id": "FA007",
-      "objective_id": "OB017",
+      "objective_id": "OB061",
       "count": 1,
       "vp_awarded": 1
     },
@@ -3953,21 +4004,111 @@
       "game_id": "GA007",
       "player_id": "PL003",
       "faction_id": "FA022",
-      "objective_id": "OB039",
+      "objective_id": "OB061",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0220",
       "game_id": "GA007",
-      "player_id": "PL004",
-      "faction_id": "FA021",
-      "objective_id": "OB034",
+      "player_id": "PL002",
+      "faction_id": "FA007",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0221",
+      "game_id": "GA007",
+      "player_id": "PL003",
+      "faction_id": "FA022",
+      "objective_id": "OB054",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0222",
+      "game_id": "GA007",
+      "player_id": "PL004",
+      "faction_id": "FA021",
+      "objective_id": "OB054",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0223",
+      "game_id": "GA007",
+      "player_id": "PL001",
+      "faction_id": "FA015",
+      "objective_id": "OB039",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0224",
+      "game_id": "GA007",
+      "player_id": "PL002",
+      "faction_id": "FA007",
+      "objective_id": "OB039",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0225",
+      "game_id": "GA007",
+      "player_id": "PL003",
+      "faction_id": "FA022",
+      "objective_id": "OB039",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0226",
+      "game_id": "GA007",
+      "player_id": "PL004",
+      "faction_id": "FA021",
+      "objective_id": "OB039",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0227",
+      "game_id": "GA007",
+      "player_id": "PL001",
+      "faction_id": "FA015",
+      "objective_id": "OB043",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0228",
+      "game_id": "GA007",
+      "player_id": "PL002",
+      "faction_id": "FA007",
+      "objective_id": "OB017",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0229",
+      "game_id": "GA007",
+      "player_id": "PL003",
+      "faction_id": "FA022",
+      "objective_id": "OB040",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0230",
+      "game_id": "GA007",
+      "player_id": "PL004",
+      "faction_id": "FA021",
+      "objective_id": "OB035",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0231",
       "game_id": "GA007",
       "player_id": "PL001",
       "faction_id": "FA015",
@@ -3976,7 +4117,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0222",
+      "scored_id": "SC0232",
       "game_id": "GA007",
       "player_id": "PL003",
       "faction_id": "FA022",
@@ -3985,7 +4126,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0223",
+      "scored_id": "SC0233",
       "game_id": "GA007",
       "player_id": "PL004",
       "faction_id": "FA021",
@@ -3994,7 +4135,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0224",
+      "scored_id": "SC0234",
       "game_id": "GA007",
       "player_id": "PL001",
       "faction_id": "FA015",
@@ -4003,16 +4144,16 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0225",
+      "scored_id": "SC0235",
       "game_id": "GA007",
       "player_id": "PL004",
       "faction_id": "FA021",
-      "objective_id": "OB040",
+      "objective_id": "OB041",
       "count": 1,
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0226",
+      "scored_id": "SC0236",
       "game_id": "GA007",
       "player_id": "PL004",
       "faction_id": "FA021",
@@ -4021,7 +4162,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0227",
+      "scored_id": "SC0237",
       "game_id": "GA007",
       "player_id": "PL004",
       "faction_id": "FA021",
@@ -4030,7 +4171,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0228",
+      "scored_id": "SC0238",
       "game_id": "GA007",
       "player_id": "PL003",
       "faction_id": "FA022",
@@ -4039,110 +4180,29 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0230",
-      "game_id": "GA008",
-      "player_id": "PL002",
-      "faction_id": "FA021",
-      "objective_id": "OB053",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0231",
-      "game_id": "GA008",
-      "player_id": "PL001",
-      "faction_id": "FA024",
-      "objective_id": "OB053",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0232",
-      "game_id": "GA008",
-      "player_id": "PL003",
-      "faction_id": "FA023",
-      "objective_id": "OB053",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0233",
-      "game_id": "GA008",
-      "player_id": "PL002",
-      "faction_id": "FA021",
-      "objective_id": "OB060",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0234",
-      "game_id": "GA008",
-      "player_id": "PL003",
-      "faction_id": "FA023",
-      "objective_id": "OB060",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0235",
-      "game_id": "GA008",
-      "player_id": "PL002",
-      "faction_id": "FA021",
-      "objective_id": "OB027",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0236",
-      "game_id": "GA008",
-      "player_id": "PL001",
-      "faction_id": "FA024",
-      "objective_id": "OB027",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0237",
-      "game_id": "GA008",
-      "player_id": "PL003",
-      "faction_id": "FA023",
-      "objective_id": "OB027",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0238",
-      "game_id": "GA008",
-      "player_id": "PL002",
-      "faction_id": "FA021",
-      "objective_id": "OB025",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
       "scored_id": "SC0239",
-      "game_id": "GA008",
-      "player_id": "PL001",
-      "faction_id": "FA024",
-      "objective_id": "OB025",
+      "game_id": "GA007",
+      "player_id": "PL004",
+      "faction_id": "FA021",
+      "objective_id": "OB023",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0240",
-      "game_id": "GA008",
+      "game_id": "GA007",
       "player_id": "PL003",
-      "faction_id": "FA023",
-      "objective_id": "OB025",
+      "faction_id": "FA022",
+      "objective_id": "OB024",
       "count": 1,
-      "vp_awarded": 1
+      "vp_awarded": 0
     },
     {
       "scored_id": "SC0241",
       "game_id": "GA008",
       "player_id": "PL002",
       "faction_id": "FA021",
-      "objective_id": "OB065",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
@@ -4151,7 +4211,7 @@
       "game_id": "GA008",
       "player_id": "PL001",
       "faction_id": "FA024",
-      "objective_id": "OB065",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
@@ -4160,7 +4220,7 @@
       "game_id": "GA008",
       "player_id": "PL003",
       "faction_id": "FA023",
-      "objective_id": "OB065",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
@@ -4169,79 +4229,79 @@
       "game_id": "GA008",
       "player_id": "PL002",
       "faction_id": "FA021",
-      "objective_id": "OB056",
+      "objective_id": "OB061",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0245",
       "game_id": "GA008",
-      "player_id": "PL001",
-      "faction_id": "FA024",
-      "objective_id": "OB056",
+      "player_id": "PL003",
+      "faction_id": "FA023",
+      "objective_id": "OB061",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0246",
       "game_id": "GA008",
-      "player_id": "PL003",
-      "faction_id": "FA023",
-      "objective_id": "OB056",
+      "player_id": "PL002",
+      "faction_id": "FA021",
+      "objective_id": "OB028",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0247",
       "game_id": "GA008",
-      "player_id": "PL002",
-      "faction_id": "FA021",
-      "objective_id": "OB061",
+      "player_id": "PL001",
+      "faction_id": "FA024",
+      "objective_id": "OB028",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0248",
       "game_id": "GA008",
-      "player_id": "PL001",
-      "faction_id": "FA024",
-      "objective_id": "OB061",
+      "player_id": "PL003",
+      "faction_id": "FA023",
+      "objective_id": "OB028",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0249",
       "game_id": "GA008",
-      "player_id": "PL003",
-      "faction_id": "FA023",
-      "objective_id": "OB061",
+      "player_id": "PL002",
+      "faction_id": "FA021",
+      "objective_id": "OB026",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0250",
       "game_id": "GA008",
-      "player_id": "PL003",
-      "faction_id": "FA023",
-      "objective_id": "OB038",
+      "player_id": "PL001",
+      "faction_id": "FA024",
+      "objective_id": "OB026",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0251",
       "game_id": "GA008",
-      "player_id": "PL001",
-      "faction_id": "FA024",
-      "objective_id": "OB039",
+      "player_id": "PL003",
+      "faction_id": "FA023",
+      "objective_id": "OB026",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0252",
       "game_id": "GA008",
-      "player_id": "PL003",
-      "faction_id": "FA023",
-      "objective_id": "OB034",
+      "player_id": "PL002",
+      "faction_id": "FA021",
+      "objective_id": "OB065",
       "count": 1,
       "vp_awarded": 1
     },
@@ -4250,7 +4310,7 @@
       "game_id": "GA008",
       "player_id": "PL001",
       "faction_id": "FA024",
-      "objective_id": "OB030",
+      "objective_id": "OB065",
       "count": 1,
       "vp_awarded": 1
     },
@@ -4259,12 +4319,111 @@
       "game_id": "GA008",
       "player_id": "PL003",
       "faction_id": "FA023",
-      "objective_id": "OB067",
+      "objective_id": "OB065",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0255",
+      "game_id": "GA008",
+      "player_id": "PL002",
+      "faction_id": "FA021",
+      "objective_id": "OB057",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0256",
+      "game_id": "GA008",
+      "player_id": "PL001",
+      "faction_id": "FA024",
+      "objective_id": "OB057",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0257",
+      "game_id": "GA008",
+      "player_id": "PL003",
+      "faction_id": "FA023",
+      "objective_id": "OB057",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0258",
+      "game_id": "GA008",
+      "player_id": "PL002",
+      "faction_id": "FA021",
+      "objective_id": "OB062",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0259",
+      "game_id": "GA008",
+      "player_id": "PL001",
+      "faction_id": "FA024",
+      "objective_id": "OB062",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0260",
+      "game_id": "GA008",
+      "player_id": "PL003",
+      "faction_id": "FA023",
+      "objective_id": "OB062",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0261",
+      "game_id": "GA008",
+      "player_id": "PL003",
+      "faction_id": "FA023",
+      "objective_id": "OB039",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0262",
+      "game_id": "GA008",
+      "player_id": "PL001",
+      "faction_id": "FA024",
+      "objective_id": "OB040",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0263",
+      "game_id": "GA008",
+      "player_id": "PL003",
+      "faction_id": "FA023",
+      "objective_id": "OB035",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0264",
+      "game_id": "GA008",
+      "player_id": "PL001",
+      "faction_id": "FA024",
+      "objective_id": "OB031",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0265",
+      "game_id": "GA008",
+      "player_id": "PL003",
+      "faction_id": "FA023",
+      "objective_id": "OB067",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0266",
       "game_id": "GA008",
       "player_id": "PL003",
       "faction_id": "FA023",
@@ -4273,7 +4432,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0256",
+      "scored_id": "SC0267",
       "game_id": "GA008",
       "player_id": "PL003",
       "faction_id": "FA023",
@@ -4282,7 +4441,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0257",
+      "scored_id": "SC0268",
       "game_id": "GA008",
       "player_id": "PL002",
       "faction_id": "FA021",
@@ -4291,7 +4450,7 @@
       "vp_awarded": 3
     },
     {
-      "scored_id": "SC0258",
+      "scored_id": "SC0269",
       "game_id": "GA008",
       "player_id": "PL002",
       "faction_id": "FA021",
@@ -4300,7 +4459,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0259",
+      "scored_id": "SC0270",
       "game_id": "GA008",
       "player_id": "PL002",
       "faction_id": "FA021",
@@ -4309,7 +4468,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0260",
+      "scored_id": "SC0271",
       "game_id": "GA008",
       "player_id": "PL001",
       "faction_id": "FA024",
@@ -4318,137 +4477,38 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0261",
-      "game_id": "GA009",
-      "player_id": "PL003",
-      "faction_id": "FA017",
-      "objective_id": "OB025",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0262",
-      "game_id": "GA009",
-      "player_id": "PL002",
-      "faction_id": "FA002",
-      "objective_id": "OB025",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0263",
-      "game_id": "GA009",
-      "player_id": "PL004",
-      "faction_id": "FA006",
-      "objective_id": "OB025",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0264",
-      "game_id": "GA009",
-      "player_id": "PL001",
-      "faction_id": "FA001",
-      "objective_id": "OB025",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0265",
-      "game_id": "GA009",
-      "player_id": "PL003",
-      "faction_id": "FA017",
-      "objective_id": "OB001",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0266",
-      "game_id": "GA009",
-      "player_id": "PL004",
-      "faction_id": "FA006",
-      "objective_id": "OB001",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0267",
-      "game_id": "GA009",
-      "player_id": "PL003",
-      "faction_id": "FA017",
-      "objective_id": "OB027",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0268",
-      "game_id": "GA009",
-      "player_id": "PL002",
-      "faction_id": "FA002",
-      "objective_id": "OB027",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0269",
-      "game_id": "GA009",
-      "player_id": "PL004",
-      "faction_id": "FA006",
-      "objective_id": "OB027",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0270",
-      "game_id": "GA009",
-      "player_id": "PL001",
-      "faction_id": "FA001",
-      "objective_id": "OB027",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0271",
-      "game_id": "GA009",
-      "player_id": "PL003",
-      "faction_id": "FA017",
-      "objective_id": "OB053",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
       "scored_id": "SC0272",
       "game_id": "GA009",
-      "player_id": "PL002",
-      "faction_id": "FA002",
-      "objective_id": "OB053",
+      "player_id": "PL003",
+      "faction_id": "FA017",
+      "objective_id": "OB026",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0273",
       "game_id": "GA009",
-      "player_id": "PL001",
-      "faction_id": "FA001",
-      "objective_id": "OB053",
+      "player_id": "PL002",
+      "faction_id": "FA002",
+      "objective_id": "OB026",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0274",
       "game_id": "GA009",
-      "player_id": "PL003",
-      "faction_id": "FA017",
-      "objective_id": "OB002",
+      "player_id": "PL004",
+      "faction_id": "FA006",
+      "objective_id": "OB026",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0275",
       "game_id": "GA009",
-      "player_id": "PL004",
-      "faction_id": "FA006",
-      "objective_id": "OB002",
+      "player_id": "PL001",
+      "faction_id": "FA001",
+      "objective_id": "OB026",
       "count": 1,
       "vp_awarded": 1
     },
@@ -4457,70 +4517,70 @@
       "game_id": "GA009",
       "player_id": "PL003",
       "faction_id": "FA017",
-      "objective_id": "OB038",
+      "objective_id": "OB001",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0277",
       "game_id": "GA009",
-      "player_id": "PL003",
-      "faction_id": "FA017",
-      "objective_id": "OB040",
+      "player_id": "PL004",
+      "faction_id": "FA006",
+      "objective_id": "OB001",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0278",
       "game_id": "GA009",
-      "player_id": "PL002",
-      "faction_id": "FA002",
-      "objective_id": "OB009",
+      "player_id": "PL003",
+      "faction_id": "FA017",
+      "objective_id": "OB028",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0279",
       "game_id": "GA009",
-      "player_id": "PL004",
-      "faction_id": "FA006",
-      "objective_id": "OB013",
+      "player_id": "PL002",
+      "faction_id": "FA002",
+      "objective_id": "OB028",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0280",
       "game_id": "GA009",
-      "player_id": "PL003",
-      "faction_id": "FA017",
-      "objective_id": "OB008",
+      "player_id": "PL004",
+      "faction_id": "FA006",
+      "objective_id": "OB028",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0281",
       "game_id": "GA009",
-      "player_id": "PL004",
-      "faction_id": "FA006",
-      "objective_id": "OB063",
+      "player_id": "PL001",
+      "faction_id": "FA001",
+      "objective_id": "OB028",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0282",
       "game_id": "GA009",
-      "player_id": "PL001",
-      "faction_id": "FA001",
-      "objective_id": "OB019",
+      "player_id": "PL003",
+      "faction_id": "FA017",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0283",
       "game_id": "GA009",
-      "player_id": "PL004",
-      "faction_id": "FA006",
-      "objective_id": "OB020",
+      "player_id": "PL002",
+      "faction_id": "FA002",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
@@ -4529,12 +4589,111 @@
       "game_id": "GA009",
       "player_id": "PL001",
       "faction_id": "FA001",
-      "objective_id": "OB020",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0285",
+      "game_id": "GA009",
+      "player_id": "PL003",
+      "faction_id": "FA017",
+      "objective_id": "OB002",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0286",
+      "game_id": "GA009",
+      "player_id": "PL004",
+      "faction_id": "FA006",
+      "objective_id": "OB002",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0287",
+      "game_id": "GA009",
+      "player_id": "PL003",
+      "faction_id": "FA017",
+      "objective_id": "OB039",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0288",
+      "game_id": "GA009",
+      "player_id": "PL003",
+      "faction_id": "FA017",
+      "objective_id": "OB041",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0289",
+      "game_id": "GA009",
+      "player_id": "PL002",
+      "faction_id": "FA002",
+      "objective_id": "OB009",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0290",
+      "game_id": "GA009",
+      "player_id": "PL004",
+      "faction_id": "FA006",
+      "objective_id": "OB013",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0291",
+      "game_id": "GA009",
+      "player_id": "PL003",
+      "faction_id": "FA017",
+      "objective_id": "OB008",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0292",
+      "game_id": "GA009",
+      "player_id": "PL004",
+      "faction_id": "FA006",
+      "objective_id": "OB064",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0293",
+      "game_id": "GA009",
+      "player_id": "PL001",
+      "faction_id": "FA001",
+      "objective_id": "OB019",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0294",
+      "game_id": "GA009",
+      "player_id": "PL004",
+      "faction_id": "FA006",
+      "objective_id": "OB020",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0295",
+      "game_id": "GA009",
+      "player_id": "PL001",
+      "faction_id": "FA001",
+      "objective_id": "OB020",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0296",
       "game_id": "GA009",
       "player_id": "PL001",
       "faction_id": "FA001",
@@ -4543,110 +4702,11 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0286",
+      "scored_id": "SC0297",
       "game_id": "GA009",
       "player_id": "PL003",
       "faction_id": "FA017",
-      "objective_id": "OB073",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0287",
-      "game_id": "GA010",
-      "player_id": "PL008",
-      "faction_id": "FA014",
-      "objective_id": "OB053",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0288",
-      "game_id": "GA010",
-      "player_id": "PL003",
-      "faction_id": "FA010",
-      "objective_id": "OB053",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0289",
-      "game_id": "GA010",
-      "player_id": "PL008",
-      "faction_id": "FA014",
-      "objective_id": "OB055",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0290",
-      "game_id": "GA010",
-      "player_id": "PL003",
-      "faction_id": "FA010",
-      "objective_id": "OB055",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0291",
-      "game_id": "GA010",
-      "player_id": "PL009",
-      "faction_id": "FA022",
-      "objective_id": "OB055",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0292",
-      "game_id": "GA010",
-      "player_id": "PL008",
-      "faction_id": "FA014",
-      "objective_id": "OB044",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0293",
-      "game_id": "GA010",
-      "player_id": "PL003",
-      "faction_id": "FA010",
-      "objective_id": "OB044",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0294",
-      "game_id": "GA010",
-      "player_id": "PL008",
-      "faction_id": "FA014",
-      "objective_id": "OB054",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0295",
-      "game_id": "GA010",
-      "player_id": "PL003",
-      "faction_id": "FA010",
-      "objective_id": "OB054",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0296",
-      "game_id": "GA010",
-      "player_id": "PL003",
-      "faction_id": "FA010",
-      "objective_id": "OB027",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0297",
-      "game_id": "GA010",
-      "player_id": "PL009",
-      "faction_id": "FA022",
-      "objective_id": "OB027",
+      "objective_id": "OB059",
       "count": 1,
       "vp_awarded": 1
     },
@@ -4655,61 +4715,61 @@
       "game_id": "GA010",
       "player_id": "PL008",
       "faction_id": "FA014",
-      "objective_id": "OB075",
+      "objective_id": "OB054",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0299",
       "game_id": "GA010",
       "player_id": "PL003",
       "faction_id": "FA010",
-      "objective_id": "OB075",
+      "objective_id": "OB054",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0300",
       "game_id": "GA010",
-      "player_id": "PL009",
-      "faction_id": "FA022",
-      "objective_id": "OB076",
+      "player_id": "PL008",
+      "faction_id": "FA014",
+      "objective_id": "OB056",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0301",
       "game_id": "GA010",
       "player_id": "PL003",
       "faction_id": "FA010",
-      "objective_id": "OB038",
+      "objective_id": "OB056",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0302",
       "game_id": "GA010",
-      "player_id": "PL008",
-      "faction_id": "FA014",
-      "objective_id": "OB017",
+      "player_id": "PL009",
+      "faction_id": "FA022",
+      "objective_id": "OB056",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0303",
       "game_id": "GA010",
-      "player_id": "PL003",
-      "faction_id": "FA010",
-      "objective_id": "OB008",
+      "player_id": "PL008",
+      "faction_id": "FA014",
+      "objective_id": "OB045",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0304",
       "game_id": "GA010",
-      "player_id": "PL009",
-      "faction_id": "FA022",
-      "objective_id": "OB057",
+      "player_id": "PL003",
+      "faction_id": "FA010",
+      "objective_id": "OB045",
       "count": 1,
       "vp_awarded": 1
     },
@@ -4718,7 +4778,7 @@
       "game_id": "GA010",
       "player_id": "PL008",
       "faction_id": "FA014",
-      "objective_id": "OB040",
+      "objective_id": "OB055",
       "count": 1,
       "vp_awarded": 1
     },
@@ -4727,12 +4787,111 @@
       "game_id": "GA010",
       "player_id": "PL003",
       "faction_id": "FA010",
-      "objective_id": "OB063",
+      "objective_id": "OB055",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0307",
+      "game_id": "GA010",
+      "player_id": "PL003",
+      "faction_id": "FA010",
+      "objective_id": "OB028",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0308",
+      "game_id": "GA010",
+      "player_id": "PL009",
+      "faction_id": "FA022",
+      "objective_id": "OB028",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0309",
+      "game_id": "GA010",
+      "player_id": "PL008",
+      "faction_id": "FA014",
+      "objective_id": "OB074",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0310",
+      "game_id": "GA010",
+      "player_id": "PL003",
+      "faction_id": "FA010",
+      "objective_id": "OB074",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0311",
+      "game_id": "GA010",
+      "player_id": "PL009",
+      "faction_id": "FA022",
+      "objective_id": "OB075",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0312",
+      "game_id": "GA010",
+      "player_id": "PL003",
+      "faction_id": "FA010",
+      "objective_id": "OB039",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0313",
+      "game_id": "GA010",
+      "player_id": "PL008",
+      "faction_id": "FA014",
+      "objective_id": "OB017",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0314",
+      "game_id": "GA010",
+      "player_id": "PL003",
+      "faction_id": "FA010",
+      "objective_id": "OB008",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0315",
+      "game_id": "GA010",
+      "player_id": "PL009",
+      "faction_id": "FA022",
+      "objective_id": "OB058",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0316",
+      "game_id": "GA010",
+      "player_id": "PL008",
+      "faction_id": "FA014",
+      "objective_id": "OB041",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0317",
+      "game_id": "GA010",
+      "player_id": "PL003",
+      "faction_id": "FA010",
+      "objective_id": "OB064",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0318",
       "game_id": "GA010",
       "player_id": "PL009",
       "faction_id": "FA022",
@@ -4741,7 +4900,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0308",
+      "scored_id": "SC0319",
       "game_id": "GA010",
       "player_id": "PL008",
       "faction_id": "FA014",
@@ -4750,16 +4909,16 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0309",
+      "scored_id": "SC0320",
       "game_id": "GA010",
       "player_id": "PL003",
       "faction_id": "FA010",
-      "objective_id": "OB077",
+      "objective_id": "OB076",
       "count": 1,
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0310",
+      "scored_id": "SC0321",
       "game_id": "GA010",
       "player_id": "PL009",
       "faction_id": "FA022",
@@ -4768,164 +4927,65 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0311",
-      "game_id": "GA010",
-      "player_id": "PL008",
-      "faction_id": "FA014",
-      "objective_id": "OB020",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0312",
-      "game_id": "GA010",
-      "player_id": "PL003",
-      "faction_id": "FA010",
-      "objective_id": "OB020",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0313",
-      "game_id": "GA010",
-      "player_id": "PL009",
-      "faction_id": "FA022",
-      "objective_id": "OB020",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0314",
-      "game_id": "GA010",
-      "player_id": "PL008",
-      "faction_id": "FA014",
-      "objective_id": "OB078",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0315",
-      "game_id": "GA010",
-      "player_id": "PL003",
-      "faction_id": "FA010",
-      "objective_id": "OB078",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0316",
-      "game_id": "GA010",
-      "player_id": "PL009",
-      "faction_id": "FA022",
-      "objective_id": "OB078",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0317",
-      "game_id": "GA011",
-      "player_id": "PL009",
-      "faction_id": "FA014",
-      "objective_id": "OB025",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0318",
-      "game_id": "GA011",
-      "player_id": "PL010",
-      "faction_id": "FA006",
-      "objective_id": "OB025",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0319",
-      "game_id": "GA011",
-      "player_id": "PL003",
-      "faction_id": "FA020",
-      "objective_id": "OB025",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0320",
-      "game_id": "GA011",
-      "player_id": "PL011",
-      "faction_id": "FA005",
-      "objective_id": "OB025",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0321",
-      "game_id": "GA011",
-      "player_id": "PL008",
-      "faction_id": "FA007",
-      "objective_id": "OB060",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
       "scored_id": "SC0322",
-      "game_id": "GA011",
-      "player_id": "PL003",
-      "faction_id": "FA020",
-      "objective_id": "OB044",
+      "game_id": "GA010",
+      "player_id": "PL008",
+      "faction_id": "FA014",
+      "objective_id": "OB020",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0323",
-      "game_id": "GA011",
+      "game_id": "GA010",
       "player_id": "PL003",
-      "faction_id": "FA020",
-      "objective_id": "OB002",
+      "faction_id": "FA010",
+      "objective_id": "OB020",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0324",
-      "game_id": "GA011",
-      "player_id": "PL010",
-      "faction_id": "FA006",
-      "objective_id": "OB065",
+      "game_id": "GA010",
+      "player_id": "PL009",
+      "faction_id": "FA022",
+      "objective_id": "OB020",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0325",
-      "game_id": "GA011",
-      "player_id": "PL003",
-      "faction_id": "FA020",
-      "objective_id": "OB065",
+      "game_id": "GA010",
+      "player_id": "PL008",
+      "faction_id": "FA014",
+      "objective_id": "OB077",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0326",
-      "game_id": "GA011",
-      "player_id": "PL010",
-      "faction_id": "FA006",
-      "objective_id": "OB038",
+      "game_id": "GA010",
+      "player_id": "PL003",
+      "faction_id": "FA010",
+      "objective_id": "OB077",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0327",
-      "game_id": "GA011",
-      "player_id": "PL003",
-      "faction_id": "FA020",
-      "objective_id": "OB038",
+      "game_id": "GA010",
+      "player_id": "PL009",
+      "faction_id": "FA022",
+      "objective_id": "OB077",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0328",
       "game_id": "GA011",
       "player_id": "PL009",
       "faction_id": "FA014",
-      "objective_id": "OB018",
+      "objective_id": "OB026",
       "count": 1,
       "vp_awarded": 1
     },
@@ -4934,7 +4994,7 @@
       "game_id": "GA011",
       "player_id": "PL010",
       "faction_id": "FA006",
-      "objective_id": "OB017",
+      "objective_id": "OB026",
       "count": 1,
       "vp_awarded": 1
     },
@@ -4943,7 +5003,7 @@
       "game_id": "GA011",
       "player_id": "PL003",
       "faction_id": "FA020",
-      "objective_id": "OB030",
+      "objective_id": "OB026",
       "count": 1,
       "vp_awarded": 1
     },
@@ -4952,21 +5012,120 @@
       "game_id": "GA011",
       "player_id": "PL011",
       "faction_id": "FA005",
-      "objective_id": "OB008",
+      "objective_id": "OB026",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0332",
       "game_id": "GA011",
-      "player_id": "PL003",
-      "faction_id": "FA020",
-      "objective_id": "OB040",
+      "player_id": "PL008",
+      "faction_id": "FA007",
+      "objective_id": "OB061",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0333",
+      "game_id": "GA011",
+      "player_id": "PL003",
+      "faction_id": "FA020",
+      "objective_id": "OB045",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0334",
+      "game_id": "GA011",
+      "player_id": "PL003",
+      "faction_id": "FA020",
+      "objective_id": "OB002",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0335",
+      "game_id": "GA011",
+      "player_id": "PL010",
+      "faction_id": "FA006",
+      "objective_id": "OB065",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0336",
+      "game_id": "GA011",
+      "player_id": "PL003",
+      "faction_id": "FA020",
+      "objective_id": "OB065",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0337",
+      "game_id": "GA011",
+      "player_id": "PL010",
+      "faction_id": "FA006",
+      "objective_id": "OB039",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0338",
+      "game_id": "GA011",
+      "player_id": "PL003",
+      "faction_id": "FA020",
+      "objective_id": "OB039",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0339",
+      "game_id": "GA011",
+      "player_id": "PL009",
+      "faction_id": "FA014",
+      "objective_id": "OB018",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0340",
+      "game_id": "GA011",
+      "player_id": "PL010",
+      "faction_id": "FA006",
+      "objective_id": "OB017",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0341",
+      "game_id": "GA011",
+      "player_id": "PL003",
+      "faction_id": "FA020",
+      "objective_id": "OB031",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0342",
+      "game_id": "GA011",
+      "player_id": "PL011",
+      "faction_id": "FA005",
+      "objective_id": "OB008",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0343",
+      "game_id": "GA011",
+      "player_id": "PL003",
+      "faction_id": "FA020",
+      "objective_id": "OB041",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0344",
       "game_id": "GA011",
       "player_id": "PL010",
       "faction_id": "FA006",
@@ -4975,7 +5134,7 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0334",
+      "scored_id": "SC0345",
       "game_id": "GA011",
       "player_id": "PL010",
       "faction_id": "FA006",
@@ -4984,146 +5143,83 @@
       "vp_awarded": 2
     },
     {
-      "scored_id": "SC0339",
-      "game_id": "GA012",
-      "player_id": "PL008",
-      "faction_id": "FA021",
-      "objective_id": "OB065",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0340",
-      "game_id": "GA012",
-      "player_id": "PL003",
-      "faction_id": "FA002",
-      "objective_id": "OB065",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0341",
-      "game_id": "GA012",
-      "player_id": "PL001",
-      "faction_id": "FA023",
-      "objective_id": "OB065",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0342",
-      "game_id": "GA012",
-      "player_id": "PL008",
-      "faction_id": "FA021",
-      "objective_id": "OB055",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0343",
-      "game_id": "GA012",
-      "player_id": "PL003",
-      "faction_id": "FA002",
-      "objective_id": "OB055",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0344",
-      "game_id": "GA012",
-      "player_id": "PL008",
-      "faction_id": "FA021",
-      "objective_id": "OB027",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0345",
-      "game_id": "GA012",
-      "player_id": "PL003",
-      "faction_id": "FA002",
-      "objective_id": "OB027",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
       "scored_id": "SC0346",
-      "game_id": "GA012",
-      "player_id": "PL001",
-      "faction_id": "FA023",
-      "objective_id": "OB027",
+      "game_id": "GA011",
+      "player_id": "PL008",
+      "faction_id": "FA007",
+      "objective_id": "OB023",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0347",
-      "game_id": "GA012",
-      "player_id": "PL008",
-      "faction_id": "FA021",
-      "objective_id": "OB060",
+      "game_id": "GA011",
+      "player_id": "PL010",
+      "faction_id": "FA006",
+      "objective_id": "OB024",
       "count": 1,
-      "vp_awarded": 1
+      "vp_awarded": 0
     },
     {
       "scored_id": "SC0348",
-      "game_id": "GA012",
-      "player_id": "PL003",
-      "faction_id": "FA002",
-      "objective_id": "OB060",
+      "game_id": "GA011",
+      "player_id": "PL010",
+      "faction_id": "FA006",
+      "objective_id": "OB023",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0349",
-      "game_id": "GA012",
+      "game_id": "GA011",
       "player_id": "PL008",
-      "faction_id": "FA021",
-      "objective_id": "OB044",
+      "faction_id": "FA007",
+      "objective_id": "OB024",
+      "count": 1,
+      "vp_awarded": 0
+    },
+    {
+      "scored_id": "SC0350",
+      "game_id": "GA011",
+      "player_id": "PL010",
+      "faction_id": "FA006",
+      "objective_id": "OB023",
       "count": 1,
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0350",
-      "game_id": "GA012",
-      "player_id": "PL008",
-      "faction_id": "FA021",
-      "objective_id": "OB038",
-      "count": 1,
-      "vp_awarded": 2
-    },
-    {
       "scored_id": "SC0351",
-      "game_id": "GA012",
-      "player_id": "PL003",
-      "faction_id": "FA002",
-      "objective_id": "OB038",
+      "game_id": "GA011",
+      "player_id": "PL011",
+      "faction_id": "FA005",
+      "objective_id": "OB024",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 0
     },
     {
       "scored_id": "SC0352",
-      "game_id": "GA012",
-      "player_id": "PL008",
-      "faction_id": "FA021",
-      "objective_id": "OB076",
+      "game_id": "GA011",
+      "player_id": "PL011",
+      "faction_id": "FA005",
+      "objective_id": "OB023",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0353",
-      "game_id": "GA012",
-      "player_id": "PL008",
-      "faction_id": "FA021",
-      "objective_id": "OB075",
+      "game_id": "GA011",
+      "player_id": "PL003",
+      "faction_id": "FA020",
+      "objective_id": "OB024",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 0
     },
     {
       "scored_id": "SC0354",
       "game_id": "GA012",
       "player_id": "PL008",
       "faction_id": "FA021",
-      "objective_id": "OB077",
+      "objective_id": "OB065",
       "count": 1,
       "vp_awarded": 1
     },
@@ -5132,7 +5228,7 @@
       "game_id": "GA012",
       "player_id": "PL003",
       "faction_id": "FA002",
-      "objective_id": "OB079",
+      "objective_id": "OB065",
       "count": 1,
       "vp_awarded": 1
     },
@@ -5141,7 +5237,7 @@
       "game_id": "GA012",
       "player_id": "PL001",
       "faction_id": "FA023",
-      "objective_id": "OB017",
+      "objective_id": "OB065",
       "count": 1,
       "vp_awarded": 1
     },
@@ -5150,25 +5246,25 @@
       "game_id": "GA012",
       "player_id": "PL008",
       "faction_id": "FA021",
-      "objective_id": "OB040",
+      "objective_id": "OB056",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0358",
       "game_id": "GA012",
-      "player_id": "PL001",
-      "faction_id": "FA023",
-      "objective_id": "OB013",
+      "player_id": "PL003",
+      "faction_id": "FA002",
+      "objective_id": "OB056",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0359",
       "game_id": "GA012",
-      "player_id": "PL003",
-      "faction_id": "FA002",
-      "objective_id": "OB019",
+      "player_id": "PL008",
+      "faction_id": "FA021",
+      "objective_id": "OB028",
       "count": 1,
       "vp_awarded": 1
     },
@@ -5177,21 +5273,156 @@
       "game_id": "GA012",
       "player_id": "PL003",
       "faction_id": "FA002",
-      "objective_id": "OB020",
+      "objective_id": "OB028",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0361",
       "game_id": "GA012",
-      "player_id": "PL008",
-      "faction_id": "FA021",
-      "objective_id": "OB073",
+      "player_id": "PL001",
+      "faction_id": "FA023",
+      "objective_id": "OB028",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0362",
+      "game_id": "GA012",
+      "player_id": "PL008",
+      "faction_id": "FA021",
+      "objective_id": "OB061",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0363",
+      "game_id": "GA012",
+      "player_id": "PL003",
+      "faction_id": "FA002",
+      "objective_id": "OB061",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0364",
+      "game_id": "GA012",
+      "player_id": "PL008",
+      "faction_id": "FA021",
+      "objective_id": "OB045",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0365",
+      "game_id": "GA012",
+      "player_id": "PL008",
+      "faction_id": "FA021",
+      "objective_id": "OB039",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0366",
+      "game_id": "GA012",
+      "player_id": "PL003",
+      "faction_id": "FA002",
+      "objective_id": "OB039",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0367",
+      "game_id": "GA012",
+      "player_id": "PL008",
+      "faction_id": "FA021",
+      "objective_id": "OB075",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0368",
+      "game_id": "GA012",
+      "player_id": "PL008",
+      "faction_id": "FA021",
+      "objective_id": "OB074",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0369",
+      "game_id": "GA012",
+      "player_id": "PL008",
+      "faction_id": "FA021",
+      "objective_id": "OB076",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0370",
+      "game_id": "GA012",
+      "player_id": "PL003",
+      "faction_id": "FA002",
+      "objective_id": "OB078",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0371",
+      "game_id": "GA012",
+      "player_id": "PL001",
+      "faction_id": "FA023",
+      "objective_id": "OB017",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0372",
+      "game_id": "GA012",
+      "player_id": "PL008",
+      "faction_id": "FA021",
+      "objective_id": "OB041",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0373",
+      "game_id": "GA012",
+      "player_id": "PL001",
+      "faction_id": "FA023",
+      "objective_id": "OB013",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0374",
+      "game_id": "GA012",
+      "player_id": "PL003",
+      "faction_id": "FA002",
+      "objective_id": "OB019",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0375",
+      "game_id": "GA012",
+      "player_id": "PL003",
+      "faction_id": "FA002",
+      "objective_id": "OB020",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0376",
+      "game_id": "GA012",
+      "player_id": "PL008",
+      "faction_id": "FA021",
+      "objective_id": "OB059",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0377",
       "game_id": "GA012",
       "player_id": "PL001",
       "faction_id": "FA023",
@@ -5200,155 +5431,29 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0364",
-      "game_id": "GA013",
-      "player_id": "PL008",
-      "faction_id": "FA002",
-      "objective_id": "OB053",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0365",
-      "game_id": "GA013",
-      "player_id": "PL003",
-      "faction_id": "FA019",
-      "objective_id": "OB053",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0366",
-      "game_id": "GA013",
-      "player_id": "PL004",
-      "faction_id": "FA018",
-      "objective_id": "OB053",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0367",
-      "game_id": "GA013",
-      "player_id": "PL003",
-      "faction_id": "FA019",
-      "objective_id": "OB001",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0368",
-      "game_id": "GA013",
-      "player_id": "PL004",
-      "faction_id": "FA018",
-      "objective_id": "OB001",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0369",
-      "game_id": "GA013",
-      "player_id": "PL003",
-      "faction_id": "FA019",
-      "objective_id": "OB055",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0370",
-      "game_id": "GA013",
-      "player_id": "PL004",
-      "faction_id": "FA018",
-      "objective_id": "OB055",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0371",
-      "game_id": "GA013",
-      "player_id": "PL011",
-      "faction_id": "FA010",
-      "objective_id": "OB065",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0372",
-      "game_id": "GA013",
-      "player_id": "PL008",
-      "faction_id": "FA002",
-      "objective_id": "OB065",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0373",
-      "game_id": "GA013",
-      "player_id": "PL003",
-      "faction_id": "FA019",
-      "objective_id": "OB065",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0374",
-      "game_id": "GA013",
-      "player_id": "PL003",
-      "faction_id": "FA019",
-      "objective_id": "OB002",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0375",
-      "game_id": "GA013",
-      "player_id": "PL004",
-      "faction_id": "FA018",
-      "objective_id": "OB002",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0376",
-      "game_id": "GA013",
-      "player_id": "PL003",
-      "faction_id": "FA019",
-      "objective_id": "OB056",
-      "count": 1,
-      "vp_awarded": 2
-    },
-    {
-      "scored_id": "SC0377",
-      "game_id": "GA013",
-      "player_id": "PL011",
-      "faction_id": "FA010",
-      "objective_id": "OB067",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
       "scored_id": "SC0378",
-      "game_id": "GA013",
+      "game_id": "GA012",
       "player_id": "PL008",
-      "faction_id": "FA002",
-      "objective_id": "OB034",
+      "faction_id": "FA021",
+      "objective_id": "OB023",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0379",
-      "game_id": "GA013",
+      "game_id": "GA012",
       "player_id": "PL003",
-      "faction_id": "FA019",
-      "objective_id": "OB040",
+      "faction_id": "FA002",
+      "objective_id": "OB024",
       "count": 1,
-      "vp_awarded": 1
+      "vp_awarded": 0
     },
     {
       "scored_id": "SC0380",
       "game_id": "GA013",
-      "player_id": "PL004",
-      "faction_id": "FA018",
-      "objective_id": "OB080",
+      "player_id": "PL008",
+      "faction_id": "FA002",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
@@ -5357,12 +5462,156 @@
       "game_id": "GA013",
       "player_id": "PL003",
       "faction_id": "FA019",
-      "objective_id": "OB019",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0382",
+      "game_id": "GA013",
+      "player_id": "PL004",
+      "faction_id": "FA018",
+      "objective_id": "OB054",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0383",
+      "game_id": "GA013",
+      "player_id": "PL003",
+      "faction_id": "FA019",
+      "objective_id": "OB001",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0384",
+      "game_id": "GA013",
+      "player_id": "PL004",
+      "faction_id": "FA018",
+      "objective_id": "OB001",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0385",
+      "game_id": "GA013",
+      "player_id": "PL003",
+      "faction_id": "FA019",
+      "objective_id": "OB056",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0386",
+      "game_id": "GA013",
+      "player_id": "PL004",
+      "faction_id": "FA018",
+      "objective_id": "OB056",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0387",
+      "game_id": "GA013",
+      "player_id": "PL011",
+      "faction_id": "FA010",
+      "objective_id": "OB065",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0388",
+      "game_id": "GA013",
+      "player_id": "PL008",
+      "faction_id": "FA002",
+      "objective_id": "OB065",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0389",
+      "game_id": "GA013",
+      "player_id": "PL003",
+      "faction_id": "FA019",
+      "objective_id": "OB065",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0390",
+      "game_id": "GA013",
+      "player_id": "PL003",
+      "faction_id": "FA019",
+      "objective_id": "OB002",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0391",
+      "game_id": "GA013",
+      "player_id": "PL004",
+      "faction_id": "FA018",
+      "objective_id": "OB002",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0392",
+      "game_id": "GA013",
+      "player_id": "PL003",
+      "faction_id": "FA019",
+      "objective_id": "OB057",
+      "count": 1,
+      "vp_awarded": 2
+    },
+    {
+      "scored_id": "SC0393",
+      "game_id": "GA013",
+      "player_id": "PL011",
+      "faction_id": "FA010",
+      "objective_id": "OB067",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0394",
+      "game_id": "GA013",
+      "player_id": "PL008",
+      "faction_id": "FA002",
+      "objective_id": "OB035",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0395",
+      "game_id": "GA013",
+      "player_id": "PL003",
+      "faction_id": "FA019",
+      "objective_id": "OB041",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0396",
+      "game_id": "GA013",
+      "player_id": "PL004",
+      "faction_id": "FA018",
+      "objective_id": "OB009",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0397",
+      "game_id": "GA013",
+      "player_id": "PL003",
+      "faction_id": "FA019",
+      "objective_id": "OB019",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0398",
       "game_id": "GA013",
       "player_id": "PL003",
       "faction_id": "FA019",
@@ -5371,7 +5620,7 @@
       "vp_awarded": 2
     },
     {
-      "scored_id": "SC0383",
+      "scored_id": "SC0399",
       "game_id": "GA013",
       "player_id": "PL004",
       "faction_id": "FA018",
@@ -5380,200 +5629,74 @@
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0384",
+      "scored_id": "SC0400",
       "game_id": "GA013",
       "player_id": "PL011",
       "faction_id": "FA010",
-      "objective_id": "OB081",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0385",
-      "game_id": "GA013",
-      "player_id": "PL008",
-      "faction_id": "FA002",
-      "objective_id": "OB081",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0388",
-      "game_id": "GA014",
-      "player_id": "PL003",
-      "faction_id": "FA007",
-      "objective_id": "OB002",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0389",
-      "game_id": "GA014",
-      "player_id": "PL010",
-      "faction_id": "FA017",
-      "objective_id": "OB002",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0390",
-      "game_id": "GA014",
-      "player_id": "PL008",
-      "faction_id": "FA001",
-      "objective_id": "OB002",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0391",
-      "game_id": "GA014",
-      "player_id": "PL012",
-      "faction_id": "FA020",
-      "objective_id": "OB002",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0392",
-      "game_id": "GA014",
-      "player_id": "PL001",
-      "faction_id": "FA005",
-      "objective_id": "OB002",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0393",
-      "game_id": "GA014",
-      "player_id": "PL003",
-      "faction_id": "FA007",
-      "objective_id": "OB053",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0394",
-      "game_id": "GA014",
-      "player_id": "PL010",
-      "faction_id": "FA017",
-      "objective_id": "OB053",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0395",
-      "game_id": "GA014",
-      "player_id": "PL008",
-      "faction_id": "FA001",
-      "objective_id": "OB053",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0396",
-      "game_id": "GA014",
-      "player_id": "PL012",
-      "faction_id": "FA020",
-      "objective_id": "OB053",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0397",
-      "game_id": "GA014",
-      "player_id": "PL001",
-      "faction_id": "FA005",
-      "objective_id": "OB053",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0398",
-      "game_id": "GA014",
-      "player_id": "PL003",
-      "faction_id": "FA007",
-      "objective_id": "OB065",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0399",
-      "game_id": "GA014",
-      "player_id": "PL012",
-      "faction_id": "FA020",
-      "objective_id": "OB065",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0400",
-      "game_id": "GA014",
-      "player_id": "PL003",
-      "faction_id": "FA007",
-      "objective_id": "OB027",
+      "objective_id": "OB079",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0401",
-      "game_id": "GA014",
+      "game_id": "GA013",
       "player_id": "PL008",
-      "faction_id": "FA001",
-      "objective_id": "OB027",
+      "faction_id": "FA002",
+      "objective_id": "OB079",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0402",
-      "game_id": "GA014",
-      "player_id": "PL012",
-      "faction_id": "FA020",
-      "objective_id": "OB027",
+      "game_id": "GA013",
+      "player_id": "PL011",
+      "faction_id": "FA010",
+      "objective_id": "OB023",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0403",
-      "game_id": "GA014",
-      "player_id": "PL001",
-      "faction_id": "FA005",
-      "objective_id": "OB027",
+      "game_id": "GA013",
+      "player_id": "PL004",
+      "faction_id": "FA018",
+      "objective_id": "OB024",
       "count": 1,
-      "vp_awarded": 1
+      "vp_awarded": 0
     },
     {
       "scored_id": "SC0404",
-      "game_id": "GA014",
-      "player_id": "PL008",
-      "faction_id": "FA001",
-      "objective_id": "OB001",
+      "game_id": "GA013",
+      "player_id": "PL004",
+      "faction_id": "FA018",
+      "objective_id": "OB023",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0405",
-      "game_id": "GA014",
-      "player_id": "PL012",
-      "faction_id": "FA020",
-      "objective_id": "OB001",
+      "game_id": "GA013",
+      "player_id": "PL011",
+      "faction_id": "FA010",
+      "objective_id": "OB024",
       "count": 1,
-      "vp_awarded": 1
+      "vp_awarded": 0
     },
     {
       "scored_id": "SC0406",
       "game_id": "GA014",
       "player_id": "PL003",
       "faction_id": "FA007",
-      "objective_id": "OB066",
+      "objective_id": "OB002",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0407",
       "game_id": "GA014",
-      "player_id": "PL008",
-      "faction_id": "FA001",
-      "objective_id": "OB019",
+      "player_id": "PL010",
+      "faction_id": "FA017",
+      "objective_id": "OB002",
       "count": 1,
       "vp_awarded": 1
     },
@@ -5582,187 +5705,196 @@
       "game_id": "GA014",
       "player_id": "PL008",
       "faction_id": "FA001",
-      "objective_id": "OB020",
-      "count": 2,
-      "vp_awarded": 2
+      "objective_id": "OB002",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
+      "scored_id": "SC0409",
+      "game_id": "GA014",
+      "player_id": "PL012",
+      "faction_id": "FA020",
+      "objective_id": "OB002",
+      "count": 1,
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0410",
-      "game_id": "GA015",
-      "player_id": "PL008",
-      "faction_id": "FA022",
-      "objective_id": "OB053",
+      "game_id": "GA014",
+      "player_id": "PL001",
+      "faction_id": "FA005",
+      "objective_id": "OB002",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0411",
-      "game_id": "GA015",
+      "game_id": "GA014",
       "player_id": "PL003",
-      "faction_id": "FA016",
-      "objective_id": "OB053",
+      "faction_id": "FA007",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0412",
-      "game_id": "GA015",
-      "player_id": "PL012",
-      "faction_id": "FA021",
-      "objective_id": "OB053",
+      "game_id": "GA014",
+      "player_id": "PL010",
+      "faction_id": "FA017",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0413",
-      "game_id": "GA015",
+      "game_id": "GA014",
       "player_id": "PL008",
-      "faction_id": "FA022",
-      "objective_id": "OB060",
+      "faction_id": "FA001",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0414",
-      "game_id": "GA015",
-      "player_id": "PL003",
-      "faction_id": "FA016",
-      "objective_id": "OB055",
+      "game_id": "GA014",
+      "player_id": "PL012",
+      "faction_id": "FA020",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0415",
-      "game_id": "GA015",
-      "player_id": "PL010",
-      "faction_id": "FA019",
-      "objective_id": "OB055",
+      "game_id": "GA014",
+      "player_id": "PL001",
+      "faction_id": "FA005",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0416",
-      "game_id": "GA015",
-      "player_id": "PL012",
-      "faction_id": "FA021",
-      "objective_id": "OB055",
+      "game_id": "GA014",
+      "player_id": "PL003",
+      "faction_id": "FA007",
+      "objective_id": "OB065",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0417",
-      "game_id": "GA015",
-      "player_id": "PL008",
-      "faction_id": "FA022",
-      "objective_id": "OB002",
+      "game_id": "GA014",
+      "player_id": "PL012",
+      "faction_id": "FA020",
+      "objective_id": "OB065",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0418",
-      "game_id": "GA015",
+      "game_id": "GA014",
       "player_id": "PL003",
-      "faction_id": "FA016",
-      "objective_id": "OB002",
+      "faction_id": "FA007",
+      "objective_id": "OB028",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0419",
-      "game_id": "GA015",
-      "player_id": "PL010",
-      "faction_id": "FA019",
-      "objective_id": "OB002",
+      "game_id": "GA014",
+      "player_id": "PL008",
+      "faction_id": "FA001",
+      "objective_id": "OB028",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0420",
-      "game_id": "GA015",
+      "game_id": "GA014",
       "player_id": "PL012",
-      "faction_id": "FA021",
-      "objective_id": "OB002",
+      "faction_id": "FA020",
+      "objective_id": "OB028",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0421",
-      "game_id": "GA015",
-      "player_id": "PL003",
-      "faction_id": "FA016",
-      "objective_id": "OB044",
+      "game_id": "GA014",
+      "player_id": "PL001",
+      "faction_id": "FA005",
+      "objective_id": "OB028",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0422",
-      "game_id": "GA015",
-      "player_id": "PL001",
-      "faction_id": "FA015",
-      "objective_id": "OB044",
+      "game_id": "GA014",
+      "player_id": "PL008",
+      "faction_id": "FA001",
+      "objective_id": "OB001",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0423",
-      "game_id": "GA015",
-      "player_id": "PL010",
-      "faction_id": "FA019",
-      "objective_id": "OB074",
+      "game_id": "GA014",
+      "player_id": "PL012",
+      "faction_id": "FA020",
+      "objective_id": "OB001",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0424",
-      "game_id": "GA015",
-      "player_id": "PL008",
-      "faction_id": "FA022",
-      "objective_id": "OB056",
+      "game_id": "GA014",
+      "player_id": "PL003",
+      "faction_id": "FA007",
+      "objective_id": "OB066",
       "count": 1,
       "vp_awarded": 2
     },
     {
       "scored_id": "SC0425",
-      "game_id": "GA015",
-      "player_id": "PL003",
-      "faction_id": "FA016",
-      "objective_id": "OB056",
+      "game_id": "GA014",
+      "player_id": "PL008",
+      "faction_id": "FA001",
+      "objective_id": "OB019",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0426",
-      "game_id": "GA015",
-      "player_id": "PL010",
-      "faction_id": "FA019",
-      "objective_id": "OB056",
-      "count": 1,
+      "game_id": "GA014",
+      "player_id": "PL008",
+      "faction_id": "FA001",
+      "objective_id": "OB020",
+      "count": 2,
       "vp_awarded": 2
     },
     {
       "scored_id": "SC0427",
-      "game_id": "GA015",
-      "player_id": "PL012",
-      "faction_id": "FA021",
-      "objective_id": "OB056",
+      "game_id": "GA014",
+      "player_id": "PL008",
+      "faction_id": "FA001",
+      "objective_id": "OB023",
       "count": 1,
-      "vp_awarded": 2
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0428",
-      "game_id": "GA015",
-      "player_id": "PL003",
-      "faction_id": "FA016",
-      "objective_id": "OB019",
+      "game_id": "GA014",
+      "player_id": "PL010",
+      "faction_id": "FA017",
+      "objective_id": "OB024",
       "count": 1,
-      "vp_awarded": 1
+      "vp_awarded": 0
     },
     {
       "scored_id": "SC0429",
       "game_id": "GA015",
       "player_id": "PL008",
       "faction_id": "FA022",
-      "objective_id": "OB020",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
@@ -5771,421 +5903,268 @@
       "game_id": "GA015",
       "player_id": "PL003",
       "faction_id": "FA016",
-      "objective_id": "OB020",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0431",
-      "game_id": "GA001",
-      "player_id": "PL001",
-      "faction_id": "FA001",
-      "objective_id": "OB023",
+      "game_id": "GA015",
+      "player_id": "PL012",
+      "faction_id": "FA021",
+      "objective_id": "OB054",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0432",
-      "game_id": "GA001",
-      "player_id": "PL005",
-      "faction_id": "FA005",
-      "objective_id": "OB082",
+      "game_id": "GA015",
+      "player_id": "PL008",
+      "faction_id": "FA022",
+      "objective_id": "OB061",
       "count": 1,
-      "vp_awarded": 0
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0433",
-      "game_id": "GA001",
-      "player_id": "PL002",
-      "faction_id": "FA002",
-      "objective_id": "OB023",
+      "game_id": "GA015",
+      "player_id": "PL003",
+      "faction_id": "FA016",
+      "objective_id": "OB056",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0434",
-      "game_id": "GA001",
-      "player_id": "PL003",
-      "faction_id": "FA003",
-      "objective_id": "OB082",
+      "game_id": "GA015",
+      "player_id": "PL010",
+      "faction_id": "FA019",
+      "objective_id": "OB056",
       "count": 1,
-      "vp_awarded": 0
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0435",
-      "game_id": "GA002",
-      "player_id": "PL002",
-      "faction_id": "FA009",
-      "objective_id": "OB023",
+      "game_id": "GA015",
+      "player_id": "PL012",
+      "faction_id": "FA021",
+      "objective_id": "OB056",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0436",
-      "game_id": "GA002",
-      "player_id": "PL001",
-      "faction_id": "FA010",
-      "objective_id": "OB082",
+      "game_id": "GA015",
+      "player_id": "PL008",
+      "faction_id": "FA022",
+      "objective_id": "OB002",
       "count": 1,
-      "vp_awarded": 0
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0437",
-      "game_id": "GA002",
-      "player_id": "PL005",
-      "faction_id": "FA006",
-      "objective_id": "OB023",
+      "game_id": "GA015",
+      "player_id": "PL003",
+      "faction_id": "FA016",
+      "objective_id": "OB002",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0438",
-      "game_id": "GA002",
-      "player_id": "PL003",
-      "faction_id": "FA008",
-      "objective_id": "OB082",
+      "game_id": "GA015",
+      "player_id": "PL010",
+      "faction_id": "FA019",
+      "objective_id": "OB002",
       "count": 1,
-      "vp_awarded": 0
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0439",
-      "game_id": "GA002",
-      "player_id": "PL004",
-      "faction_id": "FA007",
-      "objective_id": "OB023",
+      "game_id": "GA015",
+      "player_id": "PL012",
+      "faction_id": "FA021",
+      "objective_id": "OB002",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0440",
-      "game_id": "GA002",
-      "player_id": "PL005",
-      "faction_id": "FA006",
-      "objective_id": "OB082",
+      "game_id": "GA015",
+      "player_id": "PL003",
+      "faction_id": "FA016",
+      "objective_id": "OB045",
       "count": 1,
-      "vp_awarded": 0
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0441",
-      "game_id": "GA002",
+      "game_id": "GA015",
       "player_id": "PL001",
-      "faction_id": "FA010",
-      "objective_id": "OB023",
+      "faction_id": "FA015",
+      "objective_id": "OB045",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0442",
-      "game_id": "GA002",
-      "player_id": "PL002",
-      "faction_id": "FA009",
-      "objective_id": "OB082",
+      "game_id": "GA015",
+      "player_id": "PL010",
+      "faction_id": "FA019",
+      "objective_id": "OB073",
       "count": 1,
-      "vp_awarded": 0
+      "vp_awarded": 2
     },
     {
       "scored_id": "SC0443",
-      "game_id": "GA003",
-      "player_id": "PL002",
-      "faction_id": "FA006",
-      "objective_id": "OB023",
+      "game_id": "GA015",
+      "player_id": "PL008",
+      "faction_id": "FA022",
+      "objective_id": "OB057",
       "count": 1,
-      "vp_awarded": 1
+      "vp_awarded": 2
     },
     {
       "scored_id": "SC0444",
-      "game_id": "GA003",
-      "player_id": "PL004",
-      "faction_id": "FA012",
-      "objective_id": "OB082",
+      "game_id": "GA015",
+      "player_id": "PL003",
+      "faction_id": "FA016",
+      "objective_id": "OB057",
       "count": 1,
-      "vp_awarded": 0
+      "vp_awarded": 2
     },
     {
       "scored_id": "SC0445",
-      "game_id": "GA003",
-      "player_id": "PL004",
-      "faction_id": "FA012",
-      "objective_id": "OB023",
+      "game_id": "GA015",
+      "player_id": "PL010",
+      "faction_id": "FA019",
+      "objective_id": "OB057",
       "count": 1,
-      "vp_awarded": 1
+      "vp_awarded": 2
     },
     {
       "scored_id": "SC0446",
-      "game_id": "GA003",
-      "player_id": "PL002",
-      "faction_id": "FA006",
-      "objective_id": "OB082",
+      "game_id": "GA015",
+      "player_id": "PL012",
+      "faction_id": "FA021",
+      "objective_id": "OB057",
       "count": 1,
-      "vp_awarded": 0
+      "vp_awarded": 2
     },
     {
       "scored_id": "SC0447",
-      "game_id": "GA004",
-      "player_id": "PL002",
-      "faction_id": "FA001",
-      "objective_id": "OB023",
+      "game_id": "GA015",
+      "player_id": "PL003",
+      "faction_id": "FA016",
+      "objective_id": "OB019",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0448",
-      "game_id": "GA004",
-      "player_id": "PL003",
-      "faction_id": "FA015",
-      "objective_id": "OB082",
+      "game_id": "GA015",
+      "player_id": "PL008",
+      "faction_id": "FA022",
+      "objective_id": "OB020",
       "count": 1,
-      "vp_awarded": 0
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0449",
-      "game_id": "GA006",
-      "player_id": "PL005",
-      "faction_id": "FA018",
-      "objective_id": "OB023",
+      "game_id": "GA015",
+      "player_id": "PL003",
+      "faction_id": "FA016",
+      "objective_id": "OB020",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0450",
-      "game_id": "GA006",
-      "player_id": "PL003",
-      "faction_id": "FA006",
-      "objective_id": "OB082",
+      "game_id": "GA015",
+      "player_id": "PL008",
+      "faction_id": "FA022",
+      "objective_id": "OB023",
       "count": 1,
-      "vp_awarded": 0
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0451",
-      "game_id": "GA007",
-      "player_id": "PL004",
+      "game_id": "GA015",
+      "player_id": "PL012",
       "faction_id": "FA021",
-      "objective_id": "OB023",
+      "objective_id": "OB024",
       "count": 1,
-      "vp_awarded": 1
+      "vp_awarded": 0
     },
     {
       "scored_id": "SC0452",
-      "game_id": "GA007",
+      "game_id": "GA015",
       "player_id": "PL003",
-      "faction_id": "FA022",
-      "objective_id": "OB082",
+      "faction_id": "FA016",
+      "objective_id": "OB023",
       "count": 1,
-      "vp_awarded": 0
+      "vp_awarded": 1
     },
     {
       "scored_id": "SC0453",
-      "game_id": "GA011",
+      "game_id": "GA015",
       "player_id": "PL008",
-      "faction_id": "FA007",
-      "objective_id": "OB023",
+      "faction_id": "FA022",
+      "objective_id": "OB024",
       "count": 1,
-      "vp_awarded": 1
+      "vp_awarded": 0
     },
     {
       "scored_id": "SC0454",
-      "game_id": "GA011",
+      "game_id": "GA015",
       "player_id": "PL010",
-      "faction_id": "FA006",
-      "objective_id": "OB082",
-      "count": 1,
-      "vp_awarded": 0
-    },
-    {
-      "scored_id": "SC0455",
-      "game_id": "GA011",
-      "player_id": "PL010",
-      "faction_id": "FA006",
+      "faction_id": "FA019",
       "objective_id": "OB023",
       "count": 1,
       "vp_awarded": 1
     },
     {
-      "scored_id": "SC0456",
-      "game_id": "GA011",
-      "player_id": "PL008",
-      "faction_id": "FA007",
-      "objective_id": "OB082",
+      "scored_id": "SC0455",
+      "game_id": "GA015",
+      "player_id": "PL003",
+      "faction_id": "FA016",
+      "objective_id": "OB024",
       "count": 1,
       "vp_awarded": 0
     },
     {
+      "scored_id": "SC0456",
+      "game_id": "GA015",
+      "player_id": "PL010",
+      "faction_id": "FA019",
+      "objective_id": "OB023",
+      "count": 1,
+      "vp_awarded": 1
+    },
+    {
       "scored_id": "SC0457",
-      "game_id": "GA011",
-      "player_id": "PL011",
-      "faction_id": "FA005",
-      "objective_id": "OB082",
+      "game_id": "GA015",
+      "player_id": "PL001",
+      "faction_id": "FA015",
+      "objective_id": "OB024",
       "count": 1,
       "vp_awarded": 0
     },
     {
       "scored_id": "SC0458",
-      "game_id": "GA011",
-      "player_id": "PL011",
-      "faction_id": "FA005",
+      "game_id": "GA015",
+      "player_id": "PL012",
+      "faction_id": "FA021",
       "objective_id": "OB023",
       "count": 1,
       "vp_awarded": 1
     },
     {
       "scored_id": "SC0459",
-      "game_id": "GA011",
-      "player_id": "PL003",
-      "faction_id": "FA020",
-      "objective_id": "OB082",
-      "count": 1,
-      "vp_awarded": 0
-    },
-    {
-      "scored_id": "SC0460",
-      "game_id": "GA012",
-      "player_id": "PL008",
-      "faction_id": "FA021",
-      "objective_id": "OB023",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0461",
-      "game_id": "GA012",
-      "player_id": "PL003",
-      "faction_id": "FA002",
-      "objective_id": "OB082",
-      "count": 1,
-      "vp_awarded": 0
-    },
-    {
-      "scored_id": "SC0462",
-      "game_id": "GA013",
-      "player_id": "PL011",
-      "faction_id": "FA010",
-      "objective_id": "OB023",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0463",
-      "game_id": "GA013",
-      "player_id": "PL004",
-      "faction_id": "FA018",
-      "objective_id": "OB082",
-      "count": 1,
-      "vp_awarded": 0
-    },
-    {
-      "scored_id": "SC0464",
-      "game_id": "GA013",
-      "player_id": "PL004",
-      "faction_id": "FA018",
-      "objective_id": "OB023",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0465",
-      "game_id": "GA013",
-      "player_id": "PL011",
-      "faction_id": "FA010",
-      "objective_id": "OB082",
-      "count": 1,
-      "vp_awarded": 0
-    },
-    {
-      "scored_id": "SC0466",
-      "game_id": "GA014",
-      "player_id": "PL008",
-      "faction_id": "FA001",
-      "objective_id": "OB023",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0467",
-      "game_id": "GA014",
-      "player_id": "PL010",
-      "faction_id": "FA017",
-      "objective_id": "OB082",
-      "count": 1,
-      "vp_awarded": 0
-    },
-    {
-      "scored_id": "SC0468",
-      "game_id": "GA015",
-      "player_id": "PL008",
-      "faction_id": "FA022",
-      "objective_id": "OB023",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0469",
-      "game_id": "GA015",
-      "player_id": "PL012",
-      "faction_id": "FA021",
-      "objective_id": "OB082",
-      "count": 1,
-      "vp_awarded": 0
-    },
-    {
-      "scored_id": "SC0470",
-      "game_id": "GA015",
-      "player_id": "PL003",
-      "faction_id": "FA016",
-      "objective_id": "OB023",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0471",
-      "game_id": "GA015",
-      "player_id": "PL008",
-      "faction_id": "FA022",
-      "objective_id": "OB082",
-      "count": 1,
-      "vp_awarded": 0
-    },
-    {
-      "scored_id": "SC0472",
       "game_id": "GA015",
       "player_id": "PL010",
       "faction_id": "FA019",
-      "objective_id": "OB023",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0473",
-      "game_id": "GA015",
-      "player_id": "PL003",
-      "faction_id": "FA016",
-      "objective_id": "OB082",
-      "count": 1,
-      "vp_awarded": 0
-    },
-    {
-      "scored_id": "SC0474",
-      "game_id": "GA015",
-      "player_id": "PL001",
-      "faction_id": "FA015",
-      "objective_id": "OB082",
-      "count": 1,
-      "vp_awarded": 0
-    },
-    {
-      "scored_id": "SC0475",
-      "game_id": "GA015",
-      "player_id": "PL012",
-      "faction_id": "FA021",
-      "objective_id": "OB023",
-      "count": 1,
-      "vp_awarded": 1
-    },
-    {
-      "scored_id": "SC0476",
-      "game_id": "GA015",
-      "player_id": "PL010",
-      "faction_id": "FA019",
-      "objective_id": "OB082",
+      "objective_id": "OB024",
       "count": 1,
       "vp_awarded": 0
     }
@@ -6224,12 +6203,12 @@
     {
       "revealed_id": "RV0007",
       "game_id": "GA001",
-      "objective_id": "OB024"
+      "objective_id": "OB025"
     },
     {
       "revealed_id": "RV0008",
       "game_id": "GA002",
-      "objective_id": "OB025"
+      "objective_id": "OB026"
     },
     {
       "revealed_id": "RV0009",
@@ -6239,12 +6218,12 @@
     {
       "revealed_id": "RV0010",
       "game_id": "GA002",
-      "objective_id": "OB026"
+      "objective_id": "OB027"
     },
     {
       "revealed_id": "RV0011",
       "game_id": "GA002",
-      "objective_id": "OB027"
+      "objective_id": "OB028"
     },
     {
       "revealed_id": "RV0012",
@@ -6254,7 +6233,7 @@
     {
       "revealed_id": "RV0013",
       "game_id": "GA002",
-      "objective_id": "OB028"
+      "objective_id": "OB029"
     },
     {
       "revealed_id": "RV0014",
@@ -6264,32 +6243,32 @@
     {
       "revealed_id": "RV0015",
       "game_id": "GA003",
-      "objective_id": "OB025"
+      "objective_id": "OB026"
     },
     {
       "revealed_id": "RV0016",
       "game_id": "GA003",
-      "objective_id": "OB035"
+      "objective_id": "OB036"
     },
     {
       "revealed_id": "RV0017",
       "game_id": "GA003",
-      "objective_id": "OB036"
+      "objective_id": "OB037"
     },
     {
       "revealed_id": "RV0018",
       "game_id": "GA003",
-      "objective_id": "OB037"
+      "objective_id": "OB038"
     },
     {
       "revealed_id": "RV0019",
       "game_id": "GA003",
-      "objective_id": "OB043"
+      "objective_id": "OB044"
     },
     {
       "revealed_id": "RV0020",
       "game_id": "GA003",
-      "objective_id": "OB038"
+      "objective_id": "OB039"
     },
     {
       "revealed_id": "RV0021",
@@ -6299,17 +6278,17 @@
     {
       "revealed_id": "RV0022",
       "game_id": "GA004",
-      "objective_id": "OB036"
+      "objective_id": "OB037"
     },
     {
       "revealed_id": "RV0023",
       "game_id": "GA004",
-      "objective_id": "OB044"
+      "objective_id": "OB045"
     },
     {
       "revealed_id": "RV0024",
       "game_id": "GA004",
-      "objective_id": "OB037"
+      "objective_id": "OB038"
     },
     {
       "revealed_id": "RV0025",
@@ -6319,32 +6298,32 @@
     {
       "revealed_id": "RV0026",
       "game_id": "GA004",
-      "objective_id": "OB050"
+      "objective_id": "OB051"
     },
     {
       "revealed_id": "RV0027",
       "game_id": "GA004",
-      "objective_id": "OB051"
+      "objective_id": "OB052"
     },
     {
       "revealed_id": "RV0028",
       "game_id": "GA004",
-      "objective_id": "OB052"
+      "objective_id": "OB053"
     },
     {
       "revealed_id": "RV0029",
       "game_id": "GA005",
-      "objective_id": "OB053"
+      "objective_id": "OB054"
     },
     {
       "revealed_id": "RV0030",
       "game_id": "GA005",
-      "objective_id": "OB054"
+      "objective_id": "OB055"
     },
     {
       "revealed_id": "RV0031",
       "game_id": "GA005",
-      "objective_id": "OB055"
+      "objective_id": "OB056"
     },
     {
       "revealed_id": "RV0032",
@@ -6354,12 +6333,12 @@
     {
       "revealed_id": "RV0033",
       "game_id": "GA005",
-      "objective_id": "OB044"
+      "objective_id": "OB045"
     },
     {
       "revealed_id": "RV0034",
       "game_id": "GA005",
-      "objective_id": "OB056"
+      "objective_id": "OB057"
     },
     {
       "revealed_id": "RV0035",
@@ -6369,7 +6348,7 @@
     {
       "revealed_id": "RV0036",
       "game_id": "GA006",
-      "objective_id": "OB044"
+      "objective_id": "OB045"
     },
     {
       "revealed_id": "RV0037",
@@ -6379,22 +6358,22 @@
     {
       "revealed_id": "RV0038",
       "game_id": "GA006",
-      "objective_id": "OB025"
+      "objective_id": "OB026"
     },
     {
       "revealed_id": "RV0039",
       "game_id": "GA006",
-      "objective_id": "OB060"
+      "objective_id": "OB061"
     },
     {
       "revealed_id": "RV0040",
       "game_id": "GA006",
-      "objective_id": "OB061"
+      "objective_id": "OB062"
     },
     {
       "revealed_id": "RV0041",
       "game_id": "GA006",
-      "objective_id": "OB062"
+      "objective_id": "OB063"
     },
     {
       "revealed_id": "RV0042",
@@ -6414,47 +6393,47 @@
     {
       "revealed_id": "RV0045",
       "game_id": "GA007",
-      "objective_id": "OB044"
+      "objective_id": "OB045"
     },
     {
       "revealed_id": "RV0046",
       "game_id": "GA007",
-      "objective_id": "OB060"
+      "objective_id": "OB061"
     },
     {
       "revealed_id": "RV0047",
       "game_id": "GA007",
-      "objective_id": "OB053"
+      "objective_id": "OB054"
     },
     {
       "revealed_id": "RV0048",
       "game_id": "GA007",
-      "objective_id": "OB038"
+      "objective_id": "OB039"
     },
     {
       "revealed_id": "RV0049",
       "game_id": "GA007",
-      "objective_id": "OB050"
+      "objective_id": "OB051"
     },
     {
       "revealed_id": "RV0050",
       "game_id": "GA008",
-      "objective_id": "OB053"
+      "objective_id": "OB054"
     },
     {
       "revealed_id": "RV0051",
       "game_id": "GA008",
-      "objective_id": "OB060"
+      "objective_id": "OB061"
     },
     {
       "revealed_id": "RV0052",
       "game_id": "GA008",
-      "objective_id": "OB027"
+      "objective_id": "OB028"
     },
     {
       "revealed_id": "RV0053",
       "game_id": "GA008",
-      "objective_id": "OB025"
+      "objective_id": "OB026"
     },
     {
       "revealed_id": "RV0054",
@@ -6464,12 +6443,12 @@
     {
       "revealed_id": "RV0055",
       "game_id": "GA008",
-      "objective_id": "OB056"
+      "objective_id": "OB057"
     },
     {
       "revealed_id": "RV0056",
       "game_id": "GA008",
-      "objective_id": "OB061"
+      "objective_id": "OB062"
     },
     {
       "revealed_id": "RV0057",
@@ -6484,12 +6463,12 @@
     {
       "revealed_id": "RV0059",
       "game_id": "GA008",
-      "objective_id": "OB038"
+      "objective_id": "OB039"
     },
     {
       "revealed_id": "RV0060",
       "game_id": "GA009",
-      "objective_id": "OB025"
+      "objective_id": "OB026"
     },
     {
       "revealed_id": "RV0061",
@@ -6499,12 +6478,12 @@
     {
       "revealed_id": "RV0062",
       "game_id": "GA009",
-      "objective_id": "OB027"
+      "objective_id": "OB028"
     },
     {
       "revealed_id": "RV0063",
       "game_id": "GA009",
-      "objective_id": "OB053"
+      "objective_id": "OB054"
     },
     {
       "revealed_id": "RV0064",
@@ -6514,77 +6493,77 @@
     {
       "revealed_id": "RV0065",
       "game_id": "GA009",
-      "objective_id": "OB056"
+      "objective_id": "OB057"
     },
     {
       "revealed_id": "RV0066",
       "game_id": "GA009",
-      "objective_id": "OB074"
+      "objective_id": "OB073"
     },
     {
       "revealed_id": "RV0067",
       "game_id": "GA009",
-      "objective_id": "OB038"
+      "objective_id": "OB039"
     },
     {
       "revealed_id": "RV0068",
       "game_id": "GA010",
-      "objective_id": "OB053"
+      "objective_id": "OB054"
     },
     {
       "revealed_id": "RV0069",
       "game_id": "GA010",
-      "objective_id": "OB055"
+      "objective_id": "OB056"
     },
     {
       "revealed_id": "RV0070",
       "game_id": "GA010",
-      "objective_id": "OB044"
+      "objective_id": "OB045"
     },
     {
       "revealed_id": "RV0071",
       "game_id": "GA010",
-      "objective_id": "OB054"
+      "objective_id": "OB055"
     },
     {
       "revealed_id": "RV0072",
       "game_id": "GA010",
-      "objective_id": "OB027"
+      "objective_id": "OB028"
     },
     {
       "revealed_id": "RV0073",
       "game_id": "GA010",
-      "objective_id": "OB075"
+      "objective_id": "OB074"
     },
     {
       "revealed_id": "RV0074",
       "game_id": "GA010",
-      "objective_id": "OB076"
+      "objective_id": "OB075"
     },
     {
       "revealed_id": "RV0075",
       "game_id": "GA010",
-      "objective_id": "OB038"
+      "objective_id": "OB039"
     },
     {
       "revealed_id": "RV0076",
       "game_id": "GA010",
-      "objective_id": "OB061"
+      "objective_id": "OB062"
     },
     {
       "revealed_id": "RV0077",
       "game_id": "GA011",
-      "objective_id": "OB025"
+      "objective_id": "OB026"
     },
     {
       "revealed_id": "RV0078",
       "game_id": "GA011",
-      "objective_id": "OB060"
+      "objective_id": "OB061"
     },
     {
       "revealed_id": "RV0079",
       "game_id": "GA011",
-      "objective_id": "OB044"
+      "objective_id": "OB045"
     },
     {
       "revealed_id": "RV0080",
@@ -6599,7 +6578,7 @@
     {
       "revealed_id": "RV0082",
       "game_id": "GA011",
-      "objective_id": "OB038"
+      "objective_id": "OB039"
     },
     {
       "revealed_id": "RV0083",
@@ -6609,32 +6588,32 @@
     {
       "revealed_id": "RV0084",
       "game_id": "GA012",
-      "objective_id": "OB055"
+      "objective_id": "OB056"
     },
     {
       "revealed_id": "RV0085",
       "game_id": "GA012",
-      "objective_id": "OB027"
+      "objective_id": "OB028"
     },
     {
       "revealed_id": "RV0086",
       "game_id": "GA012",
-      "objective_id": "OB060"
+      "objective_id": "OB061"
     },
     {
       "revealed_id": "RV0087",
       "game_id": "GA012",
-      "objective_id": "OB044"
+      "objective_id": "OB045"
     },
     {
       "revealed_id": "RV0088",
       "game_id": "GA012",
-      "objective_id": "OB038"
+      "objective_id": "OB039"
     },
     {
       "revealed_id": "RV0089",
       "game_id": "GA012",
-      "objective_id": "OB076"
+      "objective_id": "OB075"
     },
     {
       "revealed_id": "RV0090",
@@ -6644,12 +6623,12 @@
     {
       "revealed_id": "RV0091",
       "game_id": "GA012",
-      "objective_id": "OB075"
+      "objective_id": "OB074"
     },
     {
       "revealed_id": "RV0092",
       "game_id": "GA013",
-      "objective_id": "OB053"
+      "objective_id": "OB054"
     },
     {
       "revealed_id": "RV0093",
@@ -6659,7 +6638,7 @@
     {
       "revealed_id": "RV0094",
       "game_id": "GA013",
-      "objective_id": "OB055"
+      "objective_id": "OB056"
     },
     {
       "revealed_id": "RV0095",
@@ -6679,12 +6658,12 @@
     {
       "revealed_id": "RV0098",
       "game_id": "GA013",
-      "objective_id": "OB075"
+      "objective_id": "OB074"
     },
     {
       "revealed_id": "RV0099",
       "game_id": "GA013",
-      "objective_id": "OB056"
+      "objective_id": "OB057"
     },
     {
       "revealed_id": "RV0100",
@@ -6694,7 +6673,7 @@
     {
       "revealed_id": "RV0101",
       "game_id": "GA014",
-      "objective_id": "OB053"
+      "objective_id": "OB054"
     },
     {
       "revealed_id": "RV0102",
@@ -6704,7 +6683,7 @@
     {
       "revealed_id": "RV0103",
       "game_id": "GA014",
-      "objective_id": "OB027"
+      "objective_id": "OB028"
     },
     {
       "revealed_id": "RV0104",
@@ -6714,7 +6693,7 @@
     {
       "revealed_id": "RV0105",
       "game_id": "GA014",
-      "objective_id": "OB074"
+      "objective_id": "OB073"
     },
     {
       "revealed_id": "RV0106",
@@ -6724,22 +6703,22 @@
     {
       "revealed_id": "RV0107",
       "game_id": "GA014",
-      "objective_id": "OB061"
+      "objective_id": "OB062"
     },
     {
       "revealed_id": "RV0108",
       "game_id": "GA015",
-      "objective_id": "OB053"
+      "objective_id": "OB054"
     },
     {
       "revealed_id": "RV0109",
       "game_id": "GA015",
-      "objective_id": "OB060"
+      "objective_id": "OB061"
     },
     {
       "revealed_id": "RV0110",
       "game_id": "GA015",
-      "objective_id": "OB055"
+      "objective_id": "OB056"
     },
     {
       "revealed_id": "RV0111",
@@ -6749,17 +6728,17 @@
     {
       "revealed_id": "RV0112",
       "game_id": "GA015",
-      "objective_id": "OB044"
+      "objective_id": "OB045"
     },
     {
       "revealed_id": "RV0113",
       "game_id": "GA015",
-      "objective_id": "OB074"
+      "objective_id": "OB073"
     },
     {
       "revealed_id": "RV0114",
       "game_id": "GA015",
-      "objective_id": "OB056"
+      "objective_id": "OB057"
     }
   ]
 }
@@ -6767,11 +6746,25 @@
 
   <script type="module">
     import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
-
     const DATA = JSON.parse(document.getElementById("data").textContent);
 
-    /* ---------- Theme passed into Plot.plot ---------- */
-    const PLOT_STYLE = "background: transparent; color: #e8dcb6; font-family: 'Roboto Condensed', sans-serif; font-size: 11px;";
+    /* ---------- Theme helpers ---------- */
+    const THEME_KEY = "ti4-theme";
+    function cssVar(name, fallback = "") {
+      return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
+    }
+    function plotStyle() {
+      return `background: transparent; color: ${cssVar("--text", "#d4cba5")}; font-family: 'Roboto Condensed', sans-serif; font-size: 11px;`;
+    }
+    function applyTheme(theme) {
+      document.body.classList.toggle("light", theme === "light");
+      const btn = document.getElementById("theme-toggle");
+      if (btn) btn.textContent = theme === "light" ? "☀" : "☾";
+    }
+    (function initTheme() {
+      const saved = localStorage.getItem(THEME_KEY) || "dark";
+      applyTheme(saved);
+    })();
 
     /* ---------- Lookups ---------- */
     const byPlayer = Object.fromEntries(DATA.dim_player.map(p => [p.player_id, p]));
@@ -6781,9 +6774,7 @@
     const fmtPct = x => x == null ? "—" : (x * 100).toFixed(0) + "%";
     const fmtFloat = (x, d = 2) => Number(x).toFixed(d);
 
-    /* ============================================================
-       Sortable table — tri-state (none → desc → asc → none)
-       ============================================================ */
+    /* ---------- Sortable table ---------- */
     function makeSortableTable(rows, columns) {
       const tbl = document.createElement("table");
       let state = { key: null, dir: null };
@@ -6820,13 +6811,9 @@
         tbl.querySelectorAll("th.sort-header").forEach(th => {
           th.addEventListener("click", () => {
             const col = columns[+th.dataset.i];
-            if (state.key !== col.key) {
-              state = { key: col.key, dir: "desc" };
-            } else if (state.dir === "desc") {
-              state.dir = "asc";
-            } else {
-              state = { key: null, dir: null };
-            }
+            if (state.key !== col.key) state = { key: col.key, dir: "desc" };
+            else if (state.dir === "desc") state.dir = "asc";
+            else state = { key: null, dir: null };
             render();
           });
         });
@@ -6835,9 +6822,7 @@
       return tbl;
     }
 
-    /* ============================================================
-       View building: filter facts by active tab
-       ============================================================ */
+    /* ---------- View builders ---------- */
     function buildView(tab) {
       const games = tab === "total"
         ? DATA.fact_game
@@ -6905,9 +6890,7 @@
       })).filter(o => o.revealed > 0 || o.scored > 0);
     }
 
-    /* ============================================================
-       Section renderers
-       ============================================================ */
+    /* ---------- Section renderers ---------- */
 
     function renderGames(view) {
       const root = document.querySelector("#section-games .content");
@@ -7021,31 +7004,36 @@
       const chartsRow = document.createElement("div");
       chartsRow.className = "charts-row";
 
+      const goldFill = cssVar("--gold", "#c4a55a");
+      const goldStroke = cssVar("--gold-dim", "#9a8245");
+      const orangeFill = cssVar("--orange", "#d8945a");
+      const orangeStroke = cssVar("--orange-dim", "#a87042");
+
       const w1 = document.createElement("div"); w1.className = "chart";
       w1.innerHTML = "<h3>Винрейт по игрокам</h3>";
       w1.appendChild(Plot.plot({
-        style: PLOT_STYLE,
+        style: plotStyle(),
         width: 540, height: 320,
         marginLeft: 95, marginRight: 20,
         x: { label: "Винрейт", percent: true, grid: true },
         y: { label: null },
         marks: [
-          Plot.barX(rows, { x: "win_rate", y: "player", sort: { y: "x", reverse: true }, fill: "#f1c232", stroke: "#b89224", strokeWidth: 0.3 }),
-          Plot.ruleX([0], { stroke: "#b89224" }),
+          Plot.barX(rows, { x: "win_rate", y: "player", sort: { y: "x", reverse: true }, fill: goldFill, stroke: goldStroke, strokeWidth: 0.3 }),
+          Plot.ruleX([0], { stroke: goldStroke }),
         ],
       }));
 
       const w2 = document.createElement("div"); w2.className = "chart";
       w2.innerHTML = "<h3>Средний очковый Ɣ по игрокам</h3>";
       w2.appendChild(Plot.plot({
-        style: PLOT_STYLE,
+        style: plotStyle(),
         width: 540, height: 320,
         marginLeft: 95, marginRight: 20,
         x: { label: "Очковый Ɣ", percent: true, grid: true },
         y: { label: null },
         marks: [
-          Plot.barX(rows, { x: "avg_gamma", y: "player", sort: { y: "x", reverse: true }, fill: "#f59f3a", stroke: "#b86d1c", strokeWidth: 0.3 }),
-          Plot.ruleX([0], { stroke: "#b86d1c" }),
+          Plot.barX(rows, { x: "avg_gamma", y: "player", sort: { y: "x", reverse: true }, fill: orangeFill, stroke: orangeStroke, strokeWidth: 0.3 }),
+          Plot.ruleX([0], { stroke: orangeStroke }),
         ],
       }));
 
@@ -7073,12 +7061,15 @@
       ]);
       root.appendChild(tbl);
 
+      const goldStroke = cssVar("--gold", "#c4a55a");
+      const ruleStroke = cssVar("--gold-dim", "#9a8245");
+
       const top10 = rows.filter(r => r.games >= 2).slice(0, 10);
       if (top10.length) {
         const wt = document.createElement("div"); wt.className = "chart";
         wt.innerHTML = "<h3>Топ-10 фракций по винрейту (мин. 2 партии)</h3>";
         wt.appendChild(Plot.plot({
-          style: PLOT_STYLE,
+          style: plotStyle(),
           width: 1100, height: 360,
           marginLeft: 180, marginRight: 30,
           x: { label: "Винрейт", percent: true, grid: true },
@@ -7088,9 +7079,9 @@
               x: "win_rate", y: "faction",
               sort: { y: "x", reverse: true },
               fill: d => d.color_hex || "#888",
-              stroke: "#f1c232", strokeWidth: 0.5,
+              stroke: goldStroke, strokeWidth: 0.5,
             }),
-            Plot.ruleX([0], { stroke: "#b89224" }),
+            Plot.ruleX([0], { stroke: ruleStroke }),
           ],
         }));
         root.appendChild(wt);
@@ -7155,7 +7146,7 @@
         const wh = document.createElement("div"); wh.className = "chart";
         wh.innerHTML = "<h3>Heatmap: фракция × публичная цель</h3>";
         wh.appendChild(Plot.plot({
-          style: PLOT_STYLE,
+          style: plotStyle(),
           marginLeft: 240, marginBottom: 110,
           x: { label: "Фракция", tickRotate: -40 },
           y: { label: null },
@@ -7181,10 +7172,16 @@
       }));
       if (!pf.length) { root.innerHTML = `<div class="empty">Нет данных для этого набора партий.</div>`; return; }
 
+      const goldStroke = cssVar("--gold", "#c4a55a");
+      const goldBright = cssVar("--gold-bright", "#d4b870");
+      const goldDim = cssVar("--gold-dim", "#9a8245");
+      const orange = cssVar("--orange", "#d8945a");
+      const orangeDim = cssVar("--orange-dim", "#a87042");
+
       const w1 = document.createElement("div"); w1.className = "chart";
       w1.innerHTML = "<h3>Heatmap: игрок × фракция (число партий)</h3>";
       w1.appendChild(Plot.plot({
-        style: PLOT_STYLE,
+        style: plotStyle(),
         marginLeft: 200, marginBottom: 100,
         x: { label: "Игрок", tickRotate: -30 },
         y: { label: null },
@@ -7205,28 +7202,28 @@
       const w2 = document.createElement("div"); w2.className = "chart";
       w2.innerHTML = "<h3>Порог VP по партиям</h3>";
       w2.appendChild(Plot.plot({
-        style: PLOT_STYLE,
+        style: plotStyle(),
         marginLeft: 50, marginRight: 20,
         width: 540, height: 240,
         x: { label: "Партия", tickFormat: d => `#${d}`, grid: true },
         y: { label: "Порог VP", domain: [9, 16], grid: true },
         marks: [
-          Plot.lineY(games, { x: "year_number", y: "vp_threshold", stroke: "#f1c232", strokeWidth: 2 }),
-          Plot.dot(games, { x: "year_number", y: "vp_threshold", fill: "#ffd54a", stroke: "#b89224", r: 4 }),
+          Plot.lineY(games, { x: "year_number", y: "vp_threshold", stroke: goldStroke, strokeWidth: 2 }),
+          Plot.dot(games, { x: "year_number", y: "vp_threshold", fill: goldBright, stroke: goldDim, r: 4 }),
         ],
       }));
 
       const w3 = document.createElement("div"); w3.className = "chart";
       w3.innerHTML = "<h3>Число игроков по партиям</h3>";
       w3.appendChild(Plot.plot({
-        style: PLOT_STYLE,
+        style: plotStyle(),
         marginLeft: 50, marginRight: 20,
         width: 540, height: 240,
         x: { label: "Партия", tickFormat: d => `#${d}`, grid: true },
         y: { label: "Число игроков", domain: [2, 7], grid: true },
         marks: [
-          Plot.lineY(games, { x: "year_number", y: "player_count", stroke: "#f59f3a", strokeWidth: 2 }),
-          Plot.dot(games, { x: "year_number", y: "player_count", fill: "#ffd54a", stroke: "#b86d1c", r: 4 }),
+          Plot.lineY(games, { x: "year_number", y: "player_count", stroke: orange, strokeWidth: 2 }),
+          Plot.dot(games, { x: "year_number", y: "player_count", fill: goldBright, stroke: orangeDim, r: 4 }),
         ],
       }));
 
@@ -7235,9 +7232,7 @@
       root.appendChild(tlRow);
     }
 
-    /* ============================================================
-       Tabs + render orchestration
-       ============================================================ */
+    /* ---------- Tabs + render orchestration ---------- */
     function currentTab() {
       const h = location.hash.replace("#", "");
       return ["total", "base", "pok"].includes(h) ? h : "total";
@@ -7274,6 +7269,13 @@
       el.addEventListener("click", () => { location.hash = "#" + el.dataset.tab; });
     });
     window.addEventListener("hashchange", renderAll);
+
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+      const next = document.body.classList.contains("light") ? "dark" : "light";
+      localStorage.setItem(THEME_KEY, next);
+      applyTheme(next);
+      renderAll();
+    });
 
     renderAll();
   </script>
