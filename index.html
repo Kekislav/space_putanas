@@ -6860,6 +6860,7 @@
 
       const ratings = {};
       const gpCount = {};
+      const history = [];  // one entry per (game, player) AFTER the update
 
       const getR = pid => ratings[pid] ?? START;
       const getK = pid => {
@@ -6900,9 +6901,16 @@
         for (let i = 0; i < players.length; i++) {
           ratings[players[i]] = Rs[i] + deltas[i];
           gpCount[players[i]] = (gpCount[players[i]] || 0) + 1;
+          history.push({
+            year_number: game.year_number,
+            player_id: players[i],
+            player: byPlayer[players[i]].name,
+            rating: ratings[players[i]],
+            delta: deltas[i],
+          });
         }
       }
-      return { ratings, gpCount };
+      return { ratings, gpCount, history };
     }
 
     function playerStats(view) {
@@ -7080,6 +7088,58 @@
         },
       ]);
       root.appendChild(tbl);
+
+      /* ---------- Rating trajectory line chart ---------- */
+      const ratingResult = computeRatings(view);
+      const history = ratingResult.history;
+      if (history.length) {
+        const lastByPlayer = {};
+        for (const h of history) {
+          const prev = lastByPlayer[h.player];
+          if (!prev || h.year_number > prev.year_number) lastByPlayer[h.player] = h;
+        }
+        const lastPoints = Object.values(lastByPlayer);
+        const xMin = Math.min(...history.map(h => h.year_number));
+        const xMax = Math.max(...history.map(h => h.year_number));
+        const yVals = history.map(h => h.rating);
+        const yMin = Math.min(1500, ...yVals) - 10;
+        const yMax = Math.max(1500, ...yVals) + 10;
+        const goldDim = cssVar("--gold-dim", "#9a8245");
+
+        const wTraj = document.createElement("div"); wTraj.className = "chart";
+        wTraj.innerHTML = "<h3>Динамика рейтинга по игрокам</h3>";
+        wTraj.appendChild(Plot.plot({
+          style: plotStyle(),
+          width: 1100, height: 420,
+          marginLeft: 55, marginRight: 110, marginBottom: 40,
+          x: {
+            label: "Партия",
+            tickFormat: d => `#${d}`,
+            domain: [xMin - 0.5, xMax + 0.6],
+            grid: true,
+          },
+          y: { label: "Рейтинг", domain: [yMin, yMax], grid: true },
+          color: { legend: false },
+          marks: [
+            Plot.ruleY([1500], { stroke: goldDim, strokeDasharray: "3,4", strokeOpacity: 0.6 }),
+            Plot.line(history, {
+              x: "year_number", y: "rating", z: "player", stroke: "player",
+              strokeWidth: 1.8,
+              sort: { channel: "x" },
+            }),
+            Plot.dot(history, {
+              x: "year_number", y: "rating", fill: "player", stroke: "player",
+              r: 2.8, strokeWidth: 0.5,
+              title: d => `${d.player}\nГод #${d.year_number}\nРейтинг: ${Math.round(d.rating)}\nΔ: ${d.delta >= 0 ? "+" : ""}${d.delta.toFixed(1)}`,
+            }),
+            Plot.text(lastPoints, {
+              x: "year_number", y: "rating", text: "player", fill: "player",
+              textAnchor: "start", dx: 8, fontSize: 11, fontWeight: 600,
+            }),
+          ],
+        }));
+        root.appendChild(wTraj);
+      }
 
       const note = document.createElement("div");
       note.className = "info-note";
