@@ -7215,10 +7215,10 @@
       const goldStroke = cssVar("--gold", "#c4a55a");
       const ruleStroke = cssVar("--gold-dim", "#9a8245");
 
-      const top10 = rows.filter(r => r.games >= 2).slice(0, 10);
+      const top10 = rows.slice(0, 10);
       if (top10.length) {
         const wt = document.createElement("div"); wt.className = "chart";
-        wt.innerHTML = "<h3>Топ-10 фракций по винрейту (мин. 2 партии)</h3>";
+        wt.innerHTML = "<h3>Топ-10 фракций по винрейту</h3>";
         wt.appendChild(Plot.plot({
           style: plotStyle(),
           width: 1100, height: 360,
