@@ -277,6 +277,24 @@
       border: 1px dashed var(--border);
     }
 
+    .info-note {
+      margin: 0.4rem 0 1rem;
+      padding: 0.55rem 0.9rem 0.6rem;
+      background: var(--bg-zebra);
+      border-left: 3px solid var(--cyan);
+      font-size: 0.85rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .info-note b { color: var(--gold-bright); }
+    .info-note code {
+      background: rgba(196, 165, 90, 0.10);
+      padding: 0 0.3rem;
+      border-radius: 2px;
+      font-family: 'Roboto Condensed', monospace;
+      font-size: 0.92em;
+    }
+
     /* ---------- Brand header ---------- */
     .brand {
       display: flex;
@@ -6834,6 +6852,59 @@
       return { tab, games, gameIds, gp, sc, rv };
     }
 
+    /* ---------- Simple Multiplayer Elo (Kerrigan, adjacent-pairs) ---------- */
+    function computeRatings(view) {
+      const START = 1500;
+      const K_PROV = 40, K_EST = 24, K_ELITE = 16;
+      const PROV_GAMES = 5, ELITE_R = 1900;
+
+      const ratings = {};
+      const gpCount = {};
+
+      const getR = pid => ratings[pid] ?? START;
+      const getK = pid => {
+        if ((gpCount[pid] || 0) < PROV_GAMES) return K_PROV;
+        if (getR(pid) > ELITE_R) return K_ELITE;
+        return K_EST;
+      };
+
+      // Group game_player rows by game_id (within the view).
+      const gpByGame = {};
+      for (const x of view.gp) (gpByGame[x.game_id] = gpByGame[x.game_id] || []).push(x);
+
+      // Process games chronologically (year_number ascending).
+      const sortedGames = [...view.games].sort((a, b) => a.year_number - b.year_number);
+
+      for (const game of sortedGames) {
+        const players = (gpByGame[game.game_id] || [])
+          .slice()
+          .sort((a, b) => a.placement - b.placement)
+          .map(x => x.player_id);
+        if (players.length < 2) continue;
+
+        // Snapshot ratings + K *before* this game's update.
+        const Rs = players.map(getR);
+        const Ks = players.map(getK);
+        const deltas = players.map(() => 0);
+
+        // Adjacent-pair SME: each pair (i, i+1) is a game where i (higher
+        // standing) beats i+1.
+        for (let i = 0; i < players.length - 1; i++) {
+          const Rh = Rs[i], Rl = Rs[i + 1];
+          const Eh = 1 / (1 + Math.pow(10, (Rl - Rh) / 400));
+          const El = 1 - Eh;
+          deltas[i]     += Ks[i]     * (1 - Eh);  // S = 1 for higher
+          deltas[i + 1] += Ks[i + 1] * (0 - El);  // S = 0 for lower
+        }
+
+        for (let i = 0; i < players.length; i++) {
+          ratings[players[i]] = Rs[i] + deltas[i];
+          gpCount[players[i]] = (gpCount[players[i]] || 0) + 1;
+        }
+      }
+      return { ratings, gpCount };
+    }
+
     function playerStats(view) {
       const games = {}, wins = {}, vpSum = {}, placementSum = {}, count = {};
       const gameById = Object.fromEntries(view.games.map(g => [g.game_id, g]));
@@ -6846,6 +6917,7 @@
         placementSum[p] = (placementSum[p] || 0) + x.placement;
         count[p] = (count[p] || 0) + 1;
       }
+      const rate = computeRatings(view);
       return DATA.dim_player.map(p => ({
         player: p.name,
         games: games[p.player_id] || 0,
@@ -6853,6 +6925,8 @@
         win_rate: games[p.player_id] ? (wins[p.player_id] || 0) / games[p.player_id] : 0,
         avg_gamma: count[p.player_id] ? vpSum[p.player_id] / count[p.player_id] : 0,
         avg_placement: count[p.player_id] ? placementSum[p.player_id] / count[p.player_id] : 0,
+        rating: Math.round(rate.ratings[p.player_id] ?? 1500),
+        rating_provisional: (rate.gpCount[p.player_id] || 0) < 5,
       })).filter(r => r.games > 0).sort((a, b) => b.win_rate - a.win_rate || b.avg_gamma - a.avg_gamma);
     }
 
@@ -6998,8 +7072,25 @@
         { key: "win_rate", label: "Винрейт", fmt: fmtPct, type: "number" },
         { key: "avg_gamma", label: "Ср. очковый Ɣ", fmt: v => fmtFloat(v), type: "number" },
         { key: "avg_placement", label: "Ср. место", fmt: v => fmtFloat(v, 1), type: "number" },
+        {
+          key: "rating", label: "Рейтинг", type: "number",
+          fmt: (v, r) => r.rating_provisional
+            ? `<span style="color:var(--text-dim)" title="Менее 5 партий — рейтинг провизорный (SME, K=40)">${v}*</span>`
+            : `<b style="color:var(--gold-bright)">${v}</b>`,
+        },
       ]);
       root.appendChild(tbl);
+
+      const note = document.createElement("div");
+      note.className = "info-note";
+      note.innerHTML = `
+        <b>Рейтинг</b> — адаптация Elo для многопользовательских игр (Simple Multiplayer Elo, Том Керриган).
+        Каждый игрок стартует с <b>1500</b>. После партии игроки сортируются по итогу (победитель — 1-й, остальные по VP),
+        и рейтинг обновляется по парам соседей в таблице: обыграть более сильного соперника — большой плюс,
+        проиграть менее рейтинговому — большой минус. К-фактор: <code>40</code> для первых 5 партий
+        (рейтинг помечен звёздочкой <code>*</code>, провизорный), <code>24</code> после,
+        <code>16</code> при рейтинге выше 1900. Сумма изменений рейтинга по столу всегда равна нулю.`;
+      root.appendChild(note);
 
       const chartsRow = document.createElement("div");
       chartsRow.className = "charts-row";
